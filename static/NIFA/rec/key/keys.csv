@@ -25,9 +25,9 @@ Cessna,650,Citation III,"Aerospatile, Hawker Siddeley, Dessault","HS. 125, SN601
 Douglas,DC-8-72,No Name,"Boeing, Ilyushin, Airbus","A340-200, 707-320B, Il-96-300","Airline, Nope, Camber",Transport
 Piper,100i,Pilot,"Cirrus, Ruschmeyer, Robin","R90, R1180T, SR20","Aiglon, None, Tiara",General Aviation
 Eurocopter,EC725,Caracal,"Mil, Agusta, Aerospatile","AS-61R, Mi-8M, Mi-35","Hind, No Name, Hip",Military Helicopter
-Cessna,P206,Super Skylane,"Partenavia, Saab, Aero Commander","T210F, P66C, 207","Centurion, Charlie, No Name",General Aviaiton
+Cessna,P206,Super Skylane,"Partenavia, Saab, Aero Commander","T210F, P66C, 207","Centurion, Charlie, No Name",General Aviation
 Agusta Westland,AW169,No Name,"Bell, Airbus Helicopters, Aerospatile","H175, AW109, AS365","Lakota, Trekker, Dauphin II",Civilian Helicopter
-HAL,N-LCA,Tejas,"IAI, Dessault, Eurofighter","M, 2000, No Name","Typhoon, Rafale, Typhoon",Fighter Jet
+HAL,N-LCA,Tejas,"IAI, Dessault, Eurofighter","M, 2000, No Name","Typhoon, Rafale, Lavi",Fighter Jet
 Republic,P-47,Thunderbolt,"Hawker, Nakajima, Macchi","C.205, Mk.II, Ki.84","Hayate, Veltro, Hurricane",Warbird
 Aero Spacelines,B377MG,Mini Guppy,"Douglas, Canadair, Bristol","175, CL-44, DC-6","No Name, Britannia, Cargomaster",Transport
 Blackburn,S1,Buccaneer,"Armstrong Whitworth, Gloster, Avro Canada","CF-100, FAW.9, F.3","Canuck, Meteor, Javelin",Fighter Jet
@@ -35,7 +35,27 @@ Boeing,RC-135W,Rivet Joint,"Hawker Siddeley, Sud Aviation, Handley Page","K.2, T
 Gotha,Go 244,No Name,"Handley Page, Amiot, Bloch","HP.54, 143, MB.200","Bretagne, Foudroyant, Harrow",Warbird
 Saab,91,Safir,"Bucker, Nord, Messerschmitt","1002, BF.108, Bu.181","Pingouin, Taifun, Bestmann",Warbird
 Ilyushin,IL-96-300,No Name,"Boeing, Douglas, Airbus","A340-200, DC-8-72, 707-320B","Airline, Nope, Camber",Transport
-Ruschmeyer,R90,No Name,"Piper, Cirrus, Robin","R1180T, SR20, 100i","Aiglon, Tiara, Pilot",General Aviaiton
+Ruschmeyer,R90,No Name,"Piper, Cirrus, Robin","R1180T, SR20, 100i","Aiglon, Tiara, Pilot",General Aviation
 Agusta,AS-61R,No Name,"Mil, Eurocopter, Aerospatile","Mi-8M, EC725, Mi-35","Caracal, Hind, Hip",Military Helicopter
 DeHavilland Canada,DHC-6,Twin Otter,"Partenavia, Let, Harbin","410, Y-12, AP-60TP-600","No Name, Turbolet, Viator",Transport
 Airbus Helicopters,H175,No Name,"Leonardo, Agusta Westland, Aerospatile","AW169, AW109, AS365","Lakota, Trekker, Dauphin II",Military Helicopter
+Macchi,C.205,Veltro,"Hawker, Yakolev, Republic","P-47, Mk.II, Yak-9","Frank, Thunderbolt, Hurricane",Warbird
+Gloster,F.3,Meteor,"Armstrong Whitworth, Blackburn, Avro Canada","CF-100, S1, FAW.9","Buccaneer, Canuck, Javelin",Warbird
+Sud Aviation,Tp85,Caravelle,"Hawker Siddley, Handley Page, Boeing","RC-135W, K.2, MR.2","Nimrod, Rivet Joint, Victor",Transport
+Bloch,MB.200,No Name,"Handley Page, Aimot, Gotha","Go 244, 143, HP.54","Bretagne, Foudroyant, Harrow",Bomber
+Hawker Siddeley,HS.125,Dominie T.1,"Cessna, Aerospatile, Dessault","650, SN601, 10","Corvette, Falcon, Citation III",Private Jet
+Airbus,A340-200,No Name,"Boeing, Ilyushin, Douglas","DC-8-72, 707-320B, Il-96-300","Airline, Nope, Camber",Transport
+Leonardo,AW109,Trekker,"Airbus Helicopters, Bell, Aerospatile","AW169, H175, AS365","No Name, Lakota, Dauphin II",Civilian Helicopter
+Hawker,Mk.II,Hurricane,"Nakajima, Macchi, Republic","C.205, P-47, Ki.84","Hayate, Veltro, Thunderbolt",Warbird
+Aerospatile,SN601,Corvette,"Cessna, Hawker Siddeley, Dessault","HS. 125, 650, 10","Dominie T.1, Falcon, Citation III",Private Jet
+Let,410,Turbolet,"Partenavia, DeHavilland Canada, Harbin","Y-12, AP-60TP-600, DHC-6","Twin Otter, No Name, Viator",Transport
+McDonnell Douglas,F/A18-A/B/C/D,Hornet,"Boeing, Northrop Grumman, Lockheed Martin","F/A18-E/F, F-15, F-35","Super Hornet, Eagle, Lightning II",Fighter Jet
+Embraer,EMB-121,Xingu,"Beechcraft, Cessna, Saab","MC-12W, 311, 340","No Name, Liberty, Conquest II",Transport
+Let,L-200,Morava,"Diamond, Beechcraft, Cirrus","SR-22, G58, DA-42","Twin Star, Baron, No Name",General Aviation
+Showa-Nakajima,L2D,Tabby,"Lisunov, Douglas, Boeing","Li-2, DC-3, 247","No Name, Nope, Cab",Transport
+Bell,AH-1,Cobra,"McDonnell Douglas, Boeing, Sikorsky","S-76, MD 500, AH-64","No Name, Apache, Defender",Military Helicopter
+PZL,106BT-601,Turbo Kurk,"Cessna, Air Tractor, Piper","PA-25, 188, AT-802","Pawnee, Agwagon, No Name",Crop Duster
+Rockwall,B-1B,Lancer,"North American, General Dynamics, Boeing","XB-70, B52, F-111","Valkyrie, Aardvark, Stratofortress",Bomber
+Piaggio,P-166M,No Name,"OMA SUD, Softex-Aero, Margański & Mysłowski","EM-11, V-24, No Model","Orka, No Name, Skycar",General Aviation
+Cessna,210,Centurion,"Daher, Kitfox, Tecnam","P92, S7, No Model","STI, Eaglet, Kodiak",General Aviation
+Repülögépgyár,No Model,Levente II,"Boeing, Taylorcraft, Piper","J-3, T-5, J-2","Cub, Thorp, Grasshopper",General Aviation

@@ -1,11 +1,5 @@
-
-function handleClick(event) {
-
-document.getElementById("nextButton").addEventListener("click", function() {
-    document.getElementById("submitSubmitButton").click();
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("nextButton").addEventListener("click", function() {
+        document.getElementById("nextSubmitButton").click();
+    });
 });
-}
-
-const element = document.getElementById(`nextSubmitButton`);
-element.addEventListener('click', handleClick);
-

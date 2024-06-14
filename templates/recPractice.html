@@ -39,7 +39,7 @@
     </div>
 
 
-    <form id="nextQuestionForm" method="POST" action="/rec" onsubmit="return validateForm()">
+    <form id="nextQuestionForm" method="POST" action="/recPractice" onsubmit="return validateForm()">
     <div class="next" id="nextButton"><p>Next Question</p></div>
     <button type="submit" id="nextSubmitButton" style="display: none;"></button>
     </form>
@@ -53,6 +53,6 @@
     <script>
         const sessionData = {{ session_data | tojson }};
     </script>
-    <script src="{{ url_for('static', filename='recScript.js') }}"></script>
+    <script src="{{ url_for('static', filename='recPracticeScript.js') }}"></script>
 </body>
 </html>

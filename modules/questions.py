@@ -9,23 +9,23 @@ def get_rec_questions(listOfQuestions, question_df, maxQuestions):
 
 
     companies = [question_df["Company"][currentQuestion]]
-    rightCompany = companies[0]
     for i in range(0, len(question_df["WrongComp"][currentQuestion].split(','))):
         companies.append(question_df["WrongComp"][currentQuestion].split(',')[i])
+    rightCompany = companies[0]
 
     models = [question_df["Model"][currentQuestion]]
-    rightModel = models[0]
     for i in range(0, len(question_df["WrongMod"][currentQuestion].split(','))):
         models.append(question_df["WrongMod"][currentQuestion].split(',')[i])
         if models[i] == "No Model":
             models[i] = "None"
+    rightModel = models[0]
 
     names = [question_df["Name"][currentQuestion]]
-    rightName = names[0]
     for i in range(0, len(question_df["WrongName"][currentQuestion].split(','))):
         names.append(question_df["WrongName"][currentQuestion].split(',')[i])
         if names[i] == "No Name":
             names[i] = "None"
+    rightName = names[0]
 
     random.shuffle(companies)
     random.shuffle(models)

@@ -45,8 +45,8 @@ def index():
                 return redirect(url_for('home'))
     return render_template('index.html', theme=theme, error=None)
 
-@app.route("/rec", methods=['POST', 'GET'])
-def rec():
+@app.route("/recPractice", methods=['POST', 'GET'])
+def recPractice():
     if request.method == 'POST':
 
         if(len(session.get('listOfQuestions', [])) >= session.get('maxQuestions')):
@@ -76,7 +76,7 @@ def rec():
         ]
     }
 
-    return render_template('rec.html', qImg=f"/NIFA/rec/images/{currentQuestion}.png",
+    return render_template('recPractice.html', qImg=f"/NIFA/rec/images/{currentQuestion}.png",
                            man1=companies[0], man2=companies[1], man3=companies[2], man4=companies[3],
                            model1=models[0], model2=models[1], model3=models[2], model4=models[3],
                            name1=names[0], name2=names[1], name3=names[2], name4=names[3],
