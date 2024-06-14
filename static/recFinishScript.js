@@ -1,5 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("nextButton").addEventListener("click", function() {
-        document.getElementById("nextSubmitButton").click();
+    document.getElementById("homeButton").addEventListener("click", function() {
+        document.getElementById("homeSubmitButton").click();
     });
-});
