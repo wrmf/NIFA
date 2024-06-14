@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 7px;
+
+    --bg-prim: rgb(43, 42, 51);
+    --bg-sec: rgb(31, 30, 37);
+    --fc: white;
+    --acc: rgb(23, 240, 42);
+    --warn: red;
+}
+
+body {
+    background-color: var(--bg-prim);
+    color: var(--fc);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 4rem 0 10rem;
+}
+
+img.aircraftimg {
+    border-radius: 2rem;
+    max-width: 500px;
+    max-height: 30rem; /* Set your desired max height here */
+}
+
+.question {
+    background-color: var(--bg-sec);
+    padding: 2rem;
+    width: 75rem;
+    border: 0.1rem solid var(--fc);
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+}
+
+li,
+p {
+    font-size: 2rem;
+}
+
+li.noanswer:hover {
+    color: var(--acc);
+    cursor: pointer;
+}
+
+.wrong {
+    color: var(--warn);
+}
+
+.right {
+    color: var(--acc);
+}
+
+.next,
+.submit {
+    padding: 0rem 2rem;
+    background-color: var(--bg-sec);
+    border-radius: 2rem;
+    border: 0.1rem solid var(--fc);
+    transition: border-color 0.1s ease-in-out;
+}
+
+.next:hover,
+.submit:hover {
+    border-color: var(--acc);
+    cursor: pointer;
+}
+
+.imlosingmysanity {
+    position: fixed;
+    background-color: var(--bg-sec);
+    padding: 2rem;
+    top: 0;
+    right: 0;
+    border-color: var(--fc);
+    border-style: solid;
+    border-top: 0.1rem;
+    border-right: 0.1rem;
+    border-radius: 0 0 0 2rem;
+    font-size: 2rem;
+}
