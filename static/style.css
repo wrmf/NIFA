@@ -93,3 +93,70 @@ li.noanswer:hover {
     border-radius: 0 0 0 2rem;
     font-size: 2rem;
 }
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+    align-content:center;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  transition: opacity 0.5s; /* Add transition for fade out */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: var(--bg-sec);
+  border: 1px solid #888;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+  width: 10%; /* Could be more or less, depending on screen size */
+  max-width: 500px;
+  padding: 20px;
+}
+
+/* Fade out class */
+.fade-out {
+  opacity: 0;
+}
+
+
+/* The Close Button */
+.close {
+  /* Position it in the top right corner outside of the modal */
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}

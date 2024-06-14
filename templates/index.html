@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title>Home Page</title>
+        <link rel="icon" type="image/png" href="../static/favicon.png">
+		<link rel="stylesheet" href="../static/style.css">
+	</head>
+
+ <!-- Button to open the modal login form -->
+<button onclick="document.getElementById('id01').style.display='block'">Login</button>
+
+<!-- The Modal -->
+<div id="id01" class="modal">
+
+  <!-- Modal Content -->
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="container">
+
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        <br>
+      <button type="submit">Login</button>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it with fade out effect
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.classList.add('fade-out');
+    setTimeout(function() {
+      modal.style.display = "none";
+      modal.classList.remove('fade-out');
+    }, 500); // Match the transition duration
+  }
+}
+</script>
+
+    <!-- Throw error if not already session token present, and try to hit home button -->
+			{% if error %}
+				<p class="error">Error: {{ error }}
+			{% endif %}
+		</div>
+	</body>
+</html>
