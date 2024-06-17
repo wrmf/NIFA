@@ -43,7 +43,12 @@ function handleClick(event) {
 
   if (id === correctAnswer) {
     event.target.classList.add("right");
-    correctCount++; // Increment counter
+
+    // Disable further input for this question
+    for (let choice of ['c1', 'c2', 'c3', 'c4']) {
+      const element = document.getElementById(`${question}${choice}`);
+      element.removeEventListener('click', handleClick);
+    }
   } else {
     event.target.classList.add("wrong");
     console.log("Wrong!");

@@ -3,9 +3,11 @@ import random
 def get_rec_questions(listOfQuestions, question_df, maxQuestions):
     currentQuestion = random.randint(0, maxQuestions - 1) #Set an initial random question
 
-    if listOfQuestions is not None: #If this is not the first question
-        while currentQuestion in listOfQuestions:  # Make sure this question has not been asked already this game
-            currentQuestion = random.randint(0, maxQuestions - 1) #Replace with a new unasked question
+    listOfKeys = list(question_df.index) #Get the keys of the dataframe
+
+    if listOfQuestions is not None or currentQuestion not in listOfKeys: #If this is not the first question
+        while currentQuestion in listOfQuestions or currentQuestion not in listOfKeys:  # Make sure this question has not been asked already this game
+            currentQuestion = listOfKeys[random.randint(0, len(question_df) - 1)] #Get a new random question
 
 
     companies = [question_df["Company"][currentQuestion]] #Get the right company

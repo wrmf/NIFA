@@ -6,13 +6,13 @@
 	</head>
 
  <!-- Button to open the modal login form -->
-<button onclick="document.getElementById('id01').style.display='block'">Login</button>
+<button onclick="document.getElementById('id01').style.display='flex'">Login</button>
 
 <!-- The Modal -->
 <div id="id01" class="modal">
 
   <!-- Modal Content -->
-  <form class="modal-content animate" action="/action_page.php">
+  <form class="modal-content animate" action="/" method="post">
     <div class="container">
 
       <input type="password" placeholder="Enter Password" name="psw" required>
@@ -40,7 +40,7 @@ window.onclick = function(event) {
 
     <!-- Throw error if not already session token present, and try to hit home button -->
 			{% if error %}
-				<p class="error">Error: {{ error }}
+				<p class=error>{{ error }}
 			{% endif %}
 		</div>
 	</body>

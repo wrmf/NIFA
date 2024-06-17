@@ -17,6 +17,10 @@
         <button type="submit" id="homeSubmitButton" style="display: none;"></button>
     </form>
 
+    <form style="position: absolute; top: 0; right: 0;" action="/" method="get">
+        <input class="btn auth-btn {{ theme }}-btn" type="submit" style="margin-left:2px" value="Log out"/>
+    </form>
+
     <script src="{{ url_for('static', filename='recFinishScript.js') }}"></script>
 
 </body>

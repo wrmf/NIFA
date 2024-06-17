@@ -39,6 +39,20 @@ img.aircraftimg {
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
+
+}
+
+.typeQuestion {
+    background-color: var(--bg-sec);
+    padding: 2rem;
+    width: 25rem;
+    border: 0.1rem solid var(--fc);
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+
 }
 
 h1 {
@@ -82,6 +96,7 @@ li.noanswer:hover {
 
 .imlosingmysanity {
     position: fixed;
+    display: none;
     background-color: var(--bg-sec);
     padding: 2rem;
     top: 0;
@@ -98,7 +113,7 @@ li.noanswer:hover {
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-    align-content:center;
+    justify-content:center;
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
@@ -113,10 +128,12 @@ li.noanswer:hover {
 .modal-content {
   background-color: var(--bg-sec);
   border: 1px solid #888;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
+display: flex;
+  flex-direction: column;
+    justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
   width: 10%; /* Could be more or less, depending on screen size */
+    height: 10%;
   max-width: 500px;
   padding: 20px;
 }
@@ -159,4 +176,4 @@ li.noanswer:hover {
 @keyframes animatezoom {
   from {transform: scale(0)}
   to {transform: scale(1)}
-}
+}}
