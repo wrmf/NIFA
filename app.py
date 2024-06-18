@@ -110,6 +110,57 @@ def recPractice():
                            name1=names[0], name2=names[1], name3=names[2], name4=names[3],
                            session_data=session_data)
 
+@app.route("/recStudy", methods=['POST', 'GET'])
+def recStudy():
+
+    if not session.get('authenticated', None):
+        return redirect(url_for('index'))
+
+    if session.get('selected_company') is None or session.get('selected_tag') is None:
+        return redirect(url_for('rec'))
+
+    if request.method == 'POST':
+
+        if(len(session.get('listOfQuestions', [])) >= session.get('maxQuestions')):
+            return redirect(url_for('recFinish'))
+
+    else:
+        session['listOfQuestions'] = []
+
+    rec_df = read_from_rec_file()
+
+    if(session.get('selected_company') == "Select a Company" and session.get('selected_tag') == "Select a Tag"):
+        pass
+    elif(session.get('selected_company') == "Select a Company"):
+        rec_df = rec_df[rec_df['Tags'] == session.get('selected_tag')]
+    elif(session.get('selected_tag') == "Select a Tag"):
+        rec_df = rec_df[rec_df['Company'] == session.get('selected_company')]
+
+    companies, models, names, currentQuestion, rightCompany, rightModel, rightName = get_rec_questions(session.get('listOfQuestions', []), rec_df, len(rec_df))
+    session['maxQuestions'] = len(rec_df)
+
+    try:
+        if session['listOfQuestions'] is None:
+            session['listOfQuestions'] = [currentQuestion]
+        else:
+            session['listOfQuestions'].append(currentQuestion)
+    except KeyError:
+        session['listOfQuestions'] = [currentQuestion]
+
+    session_data = {
+        "answers": [
+            companies.index(rightCompany),
+            models.index(rightModel),
+            names.index(rightName)
+        ]
+    }
+
+    return render_template('recPractice.html', qImg=f"/NIFA/rec/images/{currentQuestion}.png",
+                           man1=rightCompany,
+                           model1=rightModel,
+                           name1=rightName,
+                           session_data=session_data)
+
 
 @app.route("/recFinish", methods=['POST', 'GET'])
 def recFinish():
