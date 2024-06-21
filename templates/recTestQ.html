@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="../static/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aircraft Rec Practice</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="imlosingmysanity" id="fun"></div>
+    <img src="{{ url_for('static', filename=qImg) }}" class="aircraftimg_large">
+
+    <meta http-equiv="refresh" content="3;url=/recTest" method="POST"/>
+    <script>
+        // Function to perform POST request to /recTest after 3 seconds
+        function delayedPostRequest() {
+            setTimeout(function() {
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '/recTest';
+                document.body.appendChild(form);
+                form.submit();
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
+
+        // Call the function to perform the delayed POST request
+        delayedPostRequest();
+    </script>
+
+    <form style="position: absolute; top: 0; right: 0;" action="/" method="get">
+        <input class="btn auth-btn {{ theme }}-btn" type="submit" style="margin-left:2px" value="Log out"/>
+    </form>
+
+</body>
+</html>

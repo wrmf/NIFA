@@ -43,21 +43,36 @@ def rec():
     rec_df = read_from_rec_file()
 
     if request.method == 'GET':
-        #Get list of all tags ordered alphabetically
         tags = rec_df['Tags'].unique()
         tags = sorted(tags)
         tags.insert(0, "Select a Tag")
 
-        #Get list of all companies ordered alphabetically
         companies = rec_df['Company'].unique()
         companies = sorted(companies)
         companies.insert(0, "Select a Company")
 
         return render_template('rec.html', companies=companies, tags=tags)
+
     elif request.method == "POST":
-        session['selected_company'] = request.form.get('Companies') #Save selected company to session
-        session['selected_tag'] = request.form.get('Tags') #Save selected tag to session
-        return redirect(url_for('recPractice'))
+        selected_company = request.form.get('Companies')
+        selected_tag = request.form.get('Tags')
+        button_clicked = request.form.get('button')
+
+        # Add debugging output
+        print(f"Selected Company: {selected_company}")
+        print(f"Selected Tag: {selected_tag}")
+        print(f"Button Clicked: {button_clicked}")
+
+        session['selected_company'] = selected_company
+        session['selected_tag'] = selected_tag
+
+        if button_clicked == 'study':
+            return redirect(url_for('recStudy'))
+        elif button_clicked == 'practice':
+            return redirect(url_for('recPractice'))
+        elif button_clicked == 'test':
+            return redirect(url_for('recTest'))
+
 
 @app.route("/recPractice", methods=['POST', 'GET'])
 def recPractice():
@@ -155,18 +170,77 @@ def recStudy():
         ]
     }
 
-    return render_template('recPractice.html', qImg=f"/NIFA/rec/images/{currentQuestion}.png",
+    return render_template('recStudy.html', qImg=f"/NIFA/rec/images/{currentQuestion}.png",
                            man1=rightCompany,
                            model1=rightModel,
                            name1=rightName,
                            session_data=session_data)
 
+@app.route("/recTest", methods=['POST', 'GET', 'GET_BUT_NOT_NEW'])
+def recTest():
+    if not session.get('authenticated', None):
+        return redirect(url_for('index'))
+
+    if session.get('selected_company') is None or session.get('selected_tag') is None:
+        return redirect(url_for('rec'))
+
+    rec_df = read_from_rec_file()
+
+    if request.method == 'GET':
+        try:
+            if session['listOfQuestions'] is None:
+                pass
+        except KeyError:
+            session['listOfQuestions'] = []
+
+        if (len(session.get('listOfQuestions', [])) >= session.get('maxQuestions')):
+            return redirect(url_for('recFinish'))
+
+        if(session.get('selected_company') == "Select a Company" and session.get('selected_tag') == "Select a Tag"):
+            pass
+        elif(session.get('selected_company') == "Select a Company"):
+            rec_df = rec_df[rec_df['Tags'] == session.get('selected_tag')]
+        elif(session.get('selected_tag') == "Select a Tag"):
+            rec_df = rec_df[rec_df['Company'] == session.get('selected_company')]
+
+        currentQuestion = get_next_question_id(session.get('listOfQuestions', []), rec_df, len(rec_df))
+        session['maxQuestions'] = len(rec_df)
+
+        try:
+            if session['listOfQuestions'] is None:
+                session['listOfQuestions'] = [currentQuestion]
+            else:
+                session['listOfQuestions'].append(currentQuestion)
+        except KeyError:
+            session['listOfQuestions'] = [currentQuestion]
+
+        return render_template('recTestQ.html', qImg=f"/NIFA/rec/images/{currentQuestion}.png")
+    else:
+
+        companies, models, names, rightCompany, rightModel, rightName = get_question_from_id(session.get('listOfQuestions', []), session.get['listOfQuestions'][len(session.get['listOfQuestions'])-1])
+
+        session_data = {
+            "answers": [
+                companies.index(rightCompany),
+                models.index(rightModel),
+                names.index(rightName)
+            ]
+        }
+
+        return render_template('recTestA.html', qImg=f"/NIFA/rec/images/{session.get['listOfQuestions'][len(session.get['listOfQuestions'])-1]}.png",
+                               man1=rightCompany,
+                               model1=rightModel,
+                               name1=rightName,
+                               session_data=session_data)
 
 @app.route("/recFinish", methods=['POST', 'GET'])
 def recFinish():
 
     if not session.get('authenticated', None):
         return redirect(url_for('index'))
+
+    session['selected_company'] = "Select a Company" #Reset selected company
+    session['selected_tag'] = 'Select a Tag' #Reset selected tag
 
     return render_template('recFinish.html')
 

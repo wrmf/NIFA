@@ -31,9 +31,15 @@ img.aircraftimg {
     max-height: 30rem; /* Set your desired max height here */
 }
 
+img.aircraftimg_large {
+    border-radius: 2rem;
+    max-width: 1500px;
+    max-height: 90rem; /* Set your desired max height here */
+}
+
 .question {
     background-color: var(--bg-sec);
-    padding: 2rem;
+    padding: 1rem;
     width: 75rem;
     border: 0.1rem solid var(--fc);
     border-radius: 2rem;
@@ -44,7 +50,7 @@ img.aircraftimg {
 
 .typeQuestion {
     background-color: var(--bg-sec);
-    padding: 2rem;
+    padding: 1rem;
     width: 25rem;
     border: 0.1rem solid var(--fc);
     border-radius: 2rem;
