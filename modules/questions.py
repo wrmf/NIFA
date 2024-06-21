@@ -53,6 +53,7 @@ def get_next_question_id(listOfQuestions, question_df, maxQuestions):
     return currentQuestion
 
 def get_question_from_id(question_df, currentQuestion):
+
     companies = [question_df["Company"][currentQuestion]] #Get the right company
     for i in range(0, len(question_df["WrongComp"][currentQuestion].split(','))): #Get the wrong companies
         companies.append(question_df["WrongComp"][currentQuestion].split(',')[i]) #Add the wrong companies to the list

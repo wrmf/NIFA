@@ -216,8 +216,8 @@ def recTest():
 
         return render_template('recTestQ.html', qImg=f"/NIFA/rec/images/{currentQuestion}.png")
     else:
-
-        companies, models, names, rightCompany, rightModel, rightName = get_question_from_id(session.get('listOfQuestions', []), session.get['listOfQuestions'][len(session.get['listOfQuestions'])-1])
+        print(f"LIST OF QUEstioN {session.get('listOfQuestions')[len(session.get('listOfQuestions'))-1]}")
+        companies, models, names, rightCompany, rightModel, rightName = get_question_from_id(read_from_rec_file(), session.get('listOfQuestions')[len(session.get('listOfQuestions'))-1])
 
         session_data = {
             "answers": [
@@ -227,10 +227,10 @@ def recTest():
             ]
         }
 
-        return render_template('recTestA.html', qImg=f"/NIFA/rec/images/{session.get['listOfQuestions'][len(session.get['listOfQuestions'])-1]}.png",
-                               man1=rightCompany,
-                               model1=rightModel,
-                               name1=rightName,
+        return render_template('recTestA.html',
+                               man1=companies[0], man2=companies[1], man3=companies[2], man4=companies[3],
+                               model1=models[0], model2=models[1], model3=models[2], model4=models[3],
+                               name1=names[0], name2=names[1], name3=names[2], name4=names[3],
                                session_data=session_data)
 
 @app.route("/recFinish", methods=['POST', 'GET'])
