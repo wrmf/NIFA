@@ -215,7 +215,6 @@ def recTest():
 
         return render_template('recTestQ.html', qImg=f"/NIFA/rec/images/{currentQuestion}.png")
     else:
-        print(f"LIST OF QUEstioN {session.get('listOfQuestions')[len(session.get('listOfQuestions'))-1]}")
         companies, models, names, rightCompany, rightModel, rightName = get_question_from_id(read_from_rec_file(), session.get('listOfQuestions')[len(session.get('listOfQuestions'))-1])
 
         session_data = {

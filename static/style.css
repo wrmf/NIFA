@@ -45,6 +45,7 @@ img.aircraftimg_large {
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
+    text-align: center;
 
 }
 
@@ -182,4 +183,4 @@ display: flex;
 @keyframes animatezoom {
   from {transform: scale(0)}
   to {transform: scale(1)}
-}}
+}
