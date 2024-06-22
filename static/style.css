@@ -88,6 +88,8 @@ li.noanswer:hover {
 
 .next,
 .submit {
+    display: block;
+    margin: 0 auto;
     padding: 0rem 2rem;
     background-color: var(--bg-sec);
     border-radius: 2rem;

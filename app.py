@@ -55,6 +55,8 @@ def rec():
         companies = sorted(companies)
         companies.insert(0, "Select a Company")
 
+        session['listOfQuestions'] = []
+
         return render_template('rec.html', companies=companies, tags=tags)
 
     elif request.method == "POST":
