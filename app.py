@@ -14,8 +14,11 @@ MAXQUESTIONS = 10
 app = Flask(__name__)
 
 # index page
-@app.route("/", methods=[ 'GET', 'POST' ])	# 'GET' and 'POST' are HTML methods that are used in the corresponding html file
+@app.route("/", methods=['GET', 'POST'])
 def index():
+
+    error = 'You are not currently logged in'
+
     if request.method == 'GET':
         session['authenticated'] = False
         session['currentQuestion'] = 0  # reset current question counter
@@ -25,11 +28,12 @@ def index():
         session['recAnswers'] = []
     else:
         submittedPass = request.form.get('psw')
-        if(submittedPass == password):
+        if submittedPass == password:
             session['authenticated'] = True
+        else:
+            error = 'Incorrect password. Please try again.'
 
     if not session.get('authenticated', None):
-        error = 'You are not currently logged in.'
         return render_template('index.html', error=error)
     else:
         return redirect(url_for('rec'))
@@ -57,11 +61,6 @@ def rec():
         selected_company = request.form.get('Companies')
         selected_tag = request.form.get('Tags')
         button_clicked = request.form.get('button')
-
-        # Add debugging output
-        print(f"Selected Company: {selected_company}")
-        print(f"Selected Tag: {selected_tag}")
-        print(f"Button Clicked: {button_clicked}")
 
         session['selected_company'] = selected_company
         session['selected_tag'] = selected_tag
