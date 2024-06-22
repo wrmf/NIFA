@@ -46,7 +46,6 @@ img.aircraftimg_large {
     display: flex;
     flex-direction: column;
     text-align: center;
-
 }
 
 .typeQuestion {
@@ -60,6 +59,14 @@ img.aircraftimg_large {
     justify-content: center; /* Center content vertically */
     align-items: center; /* Center content horizontally */
 
+}
+
+.dropdown-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* Add space between dropdowns if needed */
 }
 
 .centered {

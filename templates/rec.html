@@ -10,17 +10,18 @@
 <body>
     <div class="typeQuestion">
         <form action="/rec" method="post">
-            <select name="Companies">
-                {% for company in companies %}
-                <option value="{{ company }}" {% if loop.first %}selected{% endif %}>{{ company }}</option>
-                {% endfor %}
-            </select>
-            <br>
-            <select name="Tags">
-                {% for tag in tags %}
-                <option value="{{ tag }}" {% if loop.first %}selected{% endif %}>{{ tag }}</option>
-                {% endfor %}
-            </select>
+            <div class="dropdown-container">
+                <select name="Companies">
+                    {% for company in companies %}
+                    <option value="{{ company }}" {% if loop.first %}selected{% endif %}>{{ company }}</option>
+                    {% endfor %}
+                </select>
+                <select name="Tags">
+                    {% for tag in tags %}
+                    <option value="{{ tag }}" {% if loop.first %}selected{% endif %}>{{ tag }}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <br>
             <div class="button-container">
                 <button type="submit" name="button" value="study">Study</button>
