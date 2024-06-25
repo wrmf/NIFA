@@ -1,11 +1,16 @@
-import sys
-import os
+#!/home/dh_faq8jv/wrmf.me/NIFA/venv/bin/python
 
-sys.path.insert(0, "wrmf.me/NIFA")
+import logging
 
-# Activate your virtual env
-activate_this = 'wrmf.me/NIFA/venv/bin/activate_this.py'
-exec(open(activate_this).read(), {'__file__': activate_this})
+# Configure logging
+logging.basicConfig(
+    filename='/home/dh_faq8jv/wrmf.me/NIFA/flask_app.log',
+    level=logging.DEBUG,
+    format='%(asctime)s %(levelname)s %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
-# Import your Flask app
-from app.py import app as application
+logging.info("flask.fcgi script started")
+
+print("Content-Type: text/plain\n")
+print("Hello, world!")
