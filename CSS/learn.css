@@ -1,8 +1,50 @@
-main {
-    gap: 2rem;
-}
-
 img {
     width: 50%;
     border-radius: 1rem;
+}
+
+.dual {
+    display: flex;
+    gap: 2rem;
+}
+
+.left,
+.right {
+    --lrheight: 6rem;
+    --lraheight: calc(var(--lrheight) / sqrt(2));
+    background-color: var(--bg-sec);
+    width: 15rem;
+    height: var(--lrheight);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.left::after,
+.right::after {
+    position: absolute;
+    transform: rotate(45deg);
+    width: var(--lraheight);
+    height: var(--lraheight);
+    background-color: var(--bg-sec);
+    content: "";
+    z-index: -1;
+}
+
+.left {
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.right {
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.left::after {
+    left: calc(var(--lrheight) / sqrt(2) * -0.5);
+}
+
+.right::after {
+    right: calc(var(--lrheight) / sqrt(2) * -0.5);
 }
