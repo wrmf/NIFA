@@ -1,5 +1,4 @@
 main {
-    gap: 2rem;
     flex-direction: row;
     height: 100vh;
     padding: 0 4rem;
@@ -80,4 +79,19 @@ li p {
     width: max-content;
     padding: 0.5rem 1rem;
     border-radius: 1rem;
+}
+
+#skip {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: var(--bg-sec);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: color 0.05s ease-in-out;
+}
+
+#skip:hover {
+    color: var(--text-acc);
 }

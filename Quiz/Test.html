@@ -10,33 +10,53 @@
 </head>
 <body>
     <main>
-        <div id="cover" class="hidden">
-            <img src="../img/Aircraft/A330-243 MRTT.jpg" alt="A photo of a mid air refuelling tanker flying overhead at a low altitude" id="disappearingImg">
+        <!-- #Replace with DB-inserted aircraft -->
+        <div id="cover">
+            <img src="../img/Aircraft/" alt="" id="disappearingImg">
         </div>
         <ul>
             <h2>What is the manufacturer?</h2>
-            <li><p>Airbus</p></li>
-            <li><p>Boeing</p></li>
-            <li><p>Sukhoi</p></li>
-            <li><p>Tupolev</p></li>
+            <li><p></p></li>
+            <li><p></p></li>
+            <li><p></p></li>
+            <li><p></p></li>
          </ul>
          <ul>
              <h2>What is the model?</h2>
-             <li><p>A330-243</p></li>
-             <li><p>767-300</p></li>
-             <li><p>SU-55</p></li>
-             <li><p>TU-144</p></li>
+             <li><p></p></li>
+             <li><p></p></li>
+             <li><p></p></li>
+             <li><p></p></li>
          </ul>
          <ul>
              <h2>What is the common name?</h2>
-             <li><p>Voyager</p></li>
-             <li><p>Pegasus</p></li>
-             <li><p>Felon</p></li>
-             <li><p>Bear</p></li>
+             <li><p></p></li>
+             <li><p></p></li>
+             <li><p></p></li>
+             <li><p></p></li>
          </ul>
          <p id="skip">Skip</p></div>
     </main>
     <script src="../script.js"></script>
-    <script src="../JS/Test.js"></script>
+    <script>
+        function insertQuestionData(questionData) {
+            document.querySelector('#disappearingImg').src = `../img/Aircraft/${questionData.correctAircraft.imgSrc}`;
+            const manufacturerUl = document.querySelectorAll('ul')[0];
+            const modelUl = document.querySelectorAll('ul')[1];
+            const altnameUl = document.querySelectorAll('ul')[2];
+        
+            // Insert correct and wrong answers for manufacturer
+            manufacturerUl.innerHTML = questionData.wrongAnswers.map(answer => `<li><p>${answer.manufacturer}</p></li>`).join('');
+            manufacturerUl.innerHTML += `<li><p>${questionData.correctAircraft.manufacturer}</p></li>`;
+        
+            // Insert correct and wrong answers for model
+            modelUl.innerHTML = questionData.wrongAnswers.map(answer => `<li><p>${answer.model}</p></li>`).join('');
+            modelUl.innerHTML += `<li><p>${questionData.correctAircraft.model}</p></li>`;
+        
+            // Insert correct and wrong answers for altname
+            altnameUl.innerHTML = questionData.wrongAnswers.map(answer => `<li><p>${answer.altname}</p></li>`).join('');
+            altnameUl.innerHTML += `<li><p>${questionData.correctAircraft.altname}</p></li>`;
+        }
+    </script>
 </body>
 </html>

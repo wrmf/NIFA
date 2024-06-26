@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^4.19.2",
+    "knex": "^3.1.0",
+    "sqlite3": "^5.1.7"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "nifa-rewrite",
+  "version": "1.0.0",
+  "description": "A website for the Flying Sooners NIFA team to practice stuff",
+  "main": "script.js",
+  "devDependencies": {},
+  "author": "@likeusb / @wrmf",
+  "license": "ISC"
+}

@@ -10,14 +10,33 @@
 </head>
 <body>
     <main>
-       <img src="../img/Aircraft/A330-243 MRTT.jpg" alt="A photo of a mid air refuelling tanker flying overhead at a low altitude">
-       <h2>Information about the aircraft:</h2>
-       <ul>
-            <li><p>Manufacturer: Airbus</p></li>
-            <li><p>Model: A330-243</p></li>
-            <li><p>Common name: Voyager</p></li>
-       </ul>
+        <!-- #Replace with DB-inserted aircraft -->
+        <img src="../img/Aircraft/" alt="">
+        <h2>Information about the aircraft:</h2>
+        <ul>
+            <li><p></p></li>
+            <li><p></p></li>
+            <li><p></p></li>
+        </ul>
+        <div class="dual">
+            <!-- #Insert new aircraft, sequentially -->
+            <div class="left"><p>Previous</p></div>
+            <div class="right"><p>Next</p></div>
+        </div>
     </main>
     <script src="../script.js"></script>
+    <script>
+        function insertAircraftData(aircraft) {
+            console.log("insertAircraftData called with:", aircraft);
+            document.querySelector('img').src = `../img/Aircraft/${aircraft.imgSrc}.png`;
+            document.querySelector('img').alt = `A photo of ${aircraft.model}`;
+            const infoList = document.querySelector('main ul');
+            infoList.innerHTML = `
+                <li><p>Manufacturer: ${aircraft.manufacturer}</p></li>
+                <li><p>Model: ${aircraft.model}</p></li>
+                <li><p>Common name: ${aircraft.altname}</p></li>
+            `;
+        }
+    </script>
 </body>
 </html>
