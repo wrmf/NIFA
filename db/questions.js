@@ -1,21 +1,19 @@
 const knex = require("./knex");
 
+// db/questions.js
 async function getRandomQuestion() {
-    // Fetch a random aircraft
     const randomAircraft = await knex('Aircraft')
         .select('*')
         .orderByRaw('RANDOM()')
         .limit(1)
-        .first(); // Use .first() to get a single object instead of an array with one object
+        .first();
 
-    // Fetch three random wrong answers
     const wrongAnswers = await knex('Aircraft')
         .select('manufacturer', 'model', 'altname')
-        .whereNot({id: randomAircraft.id}) // Exclude the aircraft already selected
+        .whereNot({id: randomAircraft.id})
         .orderByRaw('RANDOM()')
         .limit(3);
 
-    // Combine the correct aircraft with the wrong answers
     const question = {
         correctAircraft: {
             imgSrc: randomAircraft["img src"],
@@ -23,12 +21,11 @@ async function getRandomQuestion() {
             model: randomAircraft.model,
             altname: randomAircraft.altname,
         },
-        wrongAnswers: wrongAnswers // This will be an array of objects with manufacturer, model, and altname
+        wrongAnswers: wrongAnswers
     };
 
     return question;
 }
-
 module.exports = {
     getRandomQuestion
 };

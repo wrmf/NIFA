@@ -12,8 +12,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// server.js
-
 app.get("/random-question", async (req, res) => {
     try {
         const question = await db.getRandomQuestion();
