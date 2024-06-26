@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+    /** Typography */
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 10px;
+    /** Colours */
+    --bg-prim: rgb(39, 40, 34);
+    --bg-sec: rgb(29, 30, 25);
+    --text-prim: white;
+    --text-acc: lime;
+    --text-warn: red;
+    --border-prim: rgb(51, 36, 12);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-prim);
+    color: var(--text-prim);
+}
+
+h1 {
+    font-size: clamp(2.5rem, 2dvw, 5rem);
+    font-weight: 400;
+}
+
+h2 {
+    font-size: clamp(2rem, 1.5dvw, 3.75rem);
+    font-weight: 400;
+}
+
+h4 {
+    font-size: clamp(1rem, 0.75dvw, 3rem);
+    font-weight: 300;
+}
+
+h5 {
+    font-size: clamp(3rem, 3dvw, 10rem);
+    font-weight: 700;
+}
+
+h6 {
+    font-size: clamp(4rem, 4dvw, 10rem);
+    font-weight: 700;
+}
+
+p {
+    font-size: clamp(2rem, 1.25dvw, 4rem);
+}
+
+@media screen and (orientation: portrait) {
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+    }
+
+    h5 {
+        font-size: 3.5rem;
+    }
+
+    h6 {
+        font-size: 4.5rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+button,
+input {
+    background-color: var(--bg-sec);
+    border: none;
+    color: var(--text-prim);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+}
