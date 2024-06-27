@@ -20,53 +20,50 @@
         </ul>
         <div class="dual">
             <!-- #Insert new aircraft, sequentially -->
-            <div class="left"><p>Previous</p></div>
-            <div class="right"><p>Next</p></div>
+            <div class="left" id="prev"><p>Previous</p></div>
+            <div class="right" id="next"><p>Next</p></div>
         </div>
     </main>
     <script src="../script.js"></script>
     <script>
-        let currentAircraftId = 1; // Starting with the first aircraft
-
-        async function fetchAircraft(id) {
-            try {
-                const response = await fetch(`/api/aircraft/${id}`);
-                if (!response.ok) {
-                    throw new Error('Aircraft not found');
-                }
-                const aircraft = await response.json();
-                updatePageWithAircraft(aircraft);
-            } catch (error) {
-                console.error('Failed to fetch aircraft:', error);
+    let currentIndex = 0; // Start with the first aircraft
+    
+    const updateAircraftDetails = async (index) => {
+        try {
+            const response = await fetch(`http://localhost:1337/aircraft/${index}`);
+            if (!response.ok) {
+                throw new Error('Aircraft not found');
             }
-        }
-
-        function updatePageWithAircraft(aircraft) {
-            document.querySelector('img').src = `../img/Aircraft/${aircraft["img src"]}`;
-            document.querySelector('img').alt = `Image of ${aircraft.manufacturer} ${aircraft.model}`;
-            const ul = document.querySelector('main ul');
-            ul.innerHTML = `
-                <li>Manufacturer: ${aircraft.manufacturer}</li>
-                <li>Model: ${aircraft.model}</li>
-                <li>Common Name: ${aircraft.altname}</li>
-            `;
-        }
-
-        document.querySelector('.left').addEventListener('click', () => {
-            if (currentAircraftId > 1) {
-                currentAircraftId -= 1;
-                fetchAircraft(currentAircraftId);
+            const data = await response.json();
+            const aircraft = data.correctAircraft; // Access the correctAircraft object
+            console.log(aircraft); // Debug: Log the correctAircraft object
+    
+            // Update the image source
+            const imgElement = document.querySelector('img');
+            if (imgElement) {
+                imgElement.src = `../img/Aircraft/${aircraft.imgSrc}`; // Use imgSrc from correctAircraft
+            } else {
+                console.error('Image element not found');
             }
-        });
-
-        document.querySelector('.right').addEventListener('click', () => {
-            // Assuming you know the maximum ID or have a way to check if the next ID exists
-            currentAircraftId += 1;
-            fetchAircraft(currentAircraftId);
-        });
-
-        // Initial fetch
-        fetchAircraft(currentAircraftId);
+    
+            // Update the manufacturer
+            const manufacturerElement = document.querySelector('#manufacturer');
+            if (manufacturerElement) {
+                manufacturerElement.textContent = aircraft.manufacturer; // Use manufacturer from correctAircraft
+            } else {
+                console.error('Manufacturer element not found');
+            }
+    
+            // Add similar checks and updates for other elements like model, etc.
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    
+    document.getElementById('next').addEventListener('click', () => {
+        currentIndex++; // Increment index to show the next aircraft
+        updateAircraftDetails(currentIndex);
+    });
     </script>
 </body>
 </html>
