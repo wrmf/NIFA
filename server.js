@@ -22,14 +22,13 @@ app.get("/random-question", async (req, res) => {
     }
 });
 
-// Inside server.js
-app.get("/sequential-question", async (req, res) => {
+app.get('/api/sequential-question', async (req, res) => {
     try {
-        const question = await getSequentialQuestion(); // Corrected function name
+        const question = await getSequentialQuestion();
         res.json(question);
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Error fetching a sequential question');
+        console.error('Failed to get sequential question:', error);
+        res.status(500).send('Error fetching sequential question');
     }
 });
 

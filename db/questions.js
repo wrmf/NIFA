@@ -40,7 +40,7 @@ let currentIndex = 0; // Global variable to keep track of the current index
 
 async function getSequentialQuestion() {
     // Construct the filename based on the current index
-    const imgSrcFilename = `${currentIndex}.jpg`; // Assuming the filenames are like "0.jpg", "1.jpg", etc.
+    const imgSrcFilename = `${currentIndex}.png`; // Assuming the filenames are like "0.jpg", "1.jpg", etc.
 
     const sequentialAircraft = await knex('Aircraft')
         .select('*')

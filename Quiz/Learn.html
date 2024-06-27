@@ -26,40 +26,51 @@
     </main>
     <script src="../script.js"></script>
     <script>
-        let currentImageIndex = 0;
-        let aircraftImages = [];
-
-        // Function to load aircraft images sequentially
-        function loadSequentialAircraft() {
-            // Assuming getSequentialAircraftImages is a function that returns an array of image paths
-            aircraftImages = getSequentialAircraftImages(); // This function needs to be defined in db/questions.js or similar
-            displayAircraftImage(currentImageIndex);
-        }
-
-        // Function to display the current aircraft image
-        function displayAircraftImage(index) {
-            const imgElement = document.querySelector('img'); // Assuming there's only one img tag in Learn.html
-            imgElement.src = aircraftImages[index];
-            imgElement.alt = "Aircraft Image " + (index + 1);
-        }
-
-        // Event listeners for Previous and Next buttons
-        document.getElementById('prev').addEventListener('click', function() {
-            if (currentImageIndex > 0) {
-                currentImageIndex--;
-                displayAircraftImage(currentImageIndex);
+    let currentImageIndex = 0;
+    let aircraftImages = [];
+    let aircraftInfo = []; // New array to store aircraft information
+    
+    console.log("Script started");
+    
+    function loadSequentialAircraft() {
+        console.log("loadSequentialAircraft function called");
+        fetch('/api/sequential-question')
+            .then(response => {
+                console.log("Received response from fetch");
+                return response.json();
+            })
+            .then(data => {
+                console.log("Data parsed to JSON:", data);
+                aircraftImages = [data.correctAircraft.imgSrc, ...data.wrongAnswers.map(answer => answer.imgSrc)];
+                aircraftInfo = [data.correctAircraft.name, ...data.wrongAnswers.map(answer => answer.name)];
+                console.log("Aircraft images:", aircraftImages);
+                console.log("Aircraft info:", aircraftInfo);
+                displayAircraftImage(currentImageIndex); // Display the first image after loading
+                updateListItems(aircraftInfo); // Update list items with aircraft information
+            })
+            .catch(error => console.error('Error fetching aircraft images:', error));
+    }
+    
+    function displayAircraftImage(index) {
+        console.log(`displayAircraftImage called with index: ${index}`);
+        const imgElement = document.querySelector('img');
+        imgElement.src = `../img/Aircraft/${aircraftImages[index]}`;
+        imgElement.alt = "Aircraft Image " + (index + 1);
+        console.log(`Image src set to: ${imgElement.src}`);
+    }
+    
+    function updateListItems(info) {
+        console.log("updateListItems called with info:", info);
+        const listItems = document.querySelectorAll('li p');
+        info.forEach((item, index) => {
+            if (listItems[index]) { // Check if the list item exists
+                listItems[index].textContent = item; // Update the paragraph inside the list item
+                console.log(`List item ${index} updated with: ${item}`);
             }
         });
-
-        document.getElementById('next').addEventListener('click', function() {
-            if (currentImageIndex < aircraftImages.length - 1) {
-                currentImageIndex++;
-                displayAircraftImage(currentImageIndex);
-            }
-        });
-
-        // Initial load
-        document.addEventListener('DOMContentLoaded', loadSequentialAircraft);
+    }
+    
+    document.addEventListener('DOMContentLoaded', loadSequentialAircraft);
     </script>
 </body>
 </html>
