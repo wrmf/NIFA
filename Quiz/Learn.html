@@ -14,9 +14,9 @@
         <img src="../img/Aircraft/" alt="">
         <h2>Information about the aircraft:</h2>
         <ul>
-            <li><p></p></li>
-            <li><p></p></li>
-            <li><p></p></li>
+            <li id="Manufacturer"><p></p></li>
+            <li id="Model"><p></p></li>
+            <li id="Altname"><p></p></li>
         </ul>
         <div class="dual">
             <!-- #Insert new aircraft, sequentially -->
@@ -26,51 +26,38 @@
     </main>
     <script src="../script.js"></script>
     <script>
-    let currentImageIndex = 0;
-    let aircraftImages = [];
-    let aircraftInfo = []; // New array to store aircraft information
-    
-    console.log("Script started");
-    
-    function loadSequentialAircraft() {
-        console.log("loadSequentialAircraft function called");
-        fetch('/api/sequential-question')
-            .then(response => {
-                console.log("Received response from fetch");
-                return response.json();
-            })
-            .then(data => {
-                console.log("Data parsed to JSON:", data);
-                aircraftImages = [data.correctAircraft.imgSrc, ...data.wrongAnswers.map(answer => answer.imgSrc)];
-                aircraftInfo = [data.correctAircraft.name, ...data.wrongAnswers.map(answer => answer.name)];
-                console.log("Aircraft images:", aircraftImages);
-                console.log("Aircraft info:", aircraftInfo);
-                displayAircraftImage(currentImageIndex); // Display the first image after loading
-                updateListItems(aircraftInfo); // Update list items with aircraft information
-            })
-            .catch(error => console.error('Error fetching aircraft images:', error));
-    }
-    
-    function displayAircraftImage(index) {
-        console.log(`displayAircraftImage called with index: ${index}`);
-        const imgElement = document.querySelector('img');
-        imgElement.src = `../img/Aircraft/${aircraftImages[index]}`;
-        imgElement.alt = "Aircraft Image " + (index + 1);
-        console.log(`Image src set to: ${imgElement.src}`);
-    }
-    
-    function updateListItems(info) {
-        console.log("updateListItems called with info:", info);
-        const listItems = document.querySelectorAll('li p');
-        info.forEach((item, index) => {
-            if (listItems[index]) { // Check if the list item exists
-                listItems[index].textContent = item; // Update the paragraph inside the list item
-                console.log(`List item ${index} updated with: ${item}`);
-            }
+        document.addEventListener('DOMContentLoaded', function() {
+            const nextButton = document.getElementById('next');
+
+            nextButton.addEventListener('click', function() {
+                fetchAircraft();
+            });
+
+            // Initial fetch
+            fetchAircraft();
         });
-    }
-    
-    document.addEventListener('DOMContentLoaded', loadSequentialAircraft);
+
+        async function fetchAircraft() {
+            try {
+                // Specify the correct port (1337) in the request URL
+                const response = await fetch('http://127.0.0.1:1337/api/aircraft/next');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const aircraft = await response.json();
+                updateAircraftInfo(aircraft);
+            } catch (error) {
+                console.error('Failed to fetch aircraft:', error);
+            }
+        }
+
+        function updateAircraftInfo(aircraft) {
+            document.querySelector('img').src = "../img/Aircraft/" + aircraft.correctAircraft.imgSrc;
+            document.querySelector('img').alt = aircraft.correctAircraft.model; // Assuming model is a good alt text
+            document.getElementById('Manufacturer').querySelector('p').textContent = aircraft.correctAircraft.manufacturer;
+            document.getElementById('Model').querySelector('p').textContent = aircraft.correctAircraft.model;
+            document.getElementById('Altname').querySelector('p').textContent = aircraft.correctAircraft.altname;
+        }
     </script>
 </body>
 </html>

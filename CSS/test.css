@@ -50,14 +50,12 @@ li p {
 }
 
 #skip {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
     background-color: var(--bg-sec);
     padding: 0.5rem 1rem;
     border-radius: 1rem;
     cursor: pointer;
     transition: color 0.05s ease-in-out;
+    border: 0.1rem solid var(--border-prim);
 }
 
 #skip:hover {

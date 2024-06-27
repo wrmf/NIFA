@@ -22,13 +22,15 @@ app.get("/random-question", async (req, res) => {
     }
 });
 
-app.get('/api/sequential-question', async (req, res) => {
+app.use(express.static('public'));
+
+// Route to get the next aircraft question
+app.get('/api/aircraft/next', async (req, res) => {
     try {
         const question = await getSequentialQuestion();
         res.json(question);
     } catch (error) {
-        console.error('Failed to get sequential question:', error);
-        res.status(500).send('Error fetching sequential question');
+        res.status(500).send(error.toString());
     }
 });
 

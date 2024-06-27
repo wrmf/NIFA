@@ -36,54 +36,57 @@ async function getRandomQuestion() {
     return question;
 }
 
-let currentIndex = 0; // Global variable to keep track of the current index
+let currentQuestionId = 0; // This will keep track of the current question's ID
 
 async function getSequentialQuestion() {
-    // Construct the filename based on the current index
-    const imgSrcFilename = `${currentIndex}.png`; // Assuming the filenames are like "0.jpg", "1.jpg", etc.
+    // Increment the currentQuestionId to get the next question
+    currentQuestionId += 1;
 
-    const sequentialAircraft = await knex('Aircraft')
+    const nextAircraft = await knex('Aircraft')
         .select('*')
-        .where('img src', imgSrcFilename) // Query for the aircraft with the matching filename
+        .where('id', '>', currentQuestionId)
+        .orderBy('id', 'asc')
+        .limit(1)
         .first();
 
-    if (!sequentialAircraft) {
-        // Reset currentIndex if no matching aircraft is found (e.g., end of the list)
-        currentIndex = 0;
-        return getSequentialQuestion(); // Retry with the reset index
+    // If there's no next question, reset the ID to fetch from the beginning
+    if (!nextAircraft) {
+        currentQuestionId = 0;
+        return getSequentialQuestion();
     }
+
+    currentQuestionId = nextAircraft.id; // Update the currentQuestionId with the fetched question's ID
 
     const question = {
         correctAircraft: {
-            imgSrc: sequentialAircraft["img src"],
-            manufacturer: sequentialAircraft.manufacturer,
-            model: sequentialAircraft.model,
-            altname: sequentialAircraft.altname,
+            imgSrc: nextAircraft["img src"],
+            manufacturer: nextAircraft.manufacturer,
+            model: nextAircraft.model,
+            altname: nextAircraft.altname,
         },
         wrongAnswers: [
             {
-                manufacturer: sequentialAircraft.manw1,
-                model: sequentialAircraft.modw1,
-                altname: sequentialAircraft.altnw1,
+                manufacturer: nextAircraft.manw1,
+                model: nextAircraft.modw1,
+                altname: nextAircraft.altnw1,
             },
             {
-                manufacturer: sequentialAircraft.manw2,
-                model: sequentialAircraft.modw2,
-                altname: sequentialAircraft.altnw2,
+                manufacturer: nextAircraft.manw2,
+                model: nextAircraft.modw2,
+                altname: nextAircraft.altnw2,
             },
             {
-                manufacturer: sequentialAircraft.manw3,
-                model: sequentialAircraft.modw3,
-                altname: sequentialAircraft.altnw3,
+                manufacturer: nextAircraft.manw3,
+                model: nextAircraft.modw3,
+                altname: nextAircraft.altnw3,
             }
         ]
     };
 
-    currentIndex++; // Increment the index for the next call
     return question;
 }
 
 module.exports = {
     getRandomQuestion,
-    getSequentialQuestion
+    getSequentialQuestion, // Export the new function
 };

@@ -49,6 +49,10 @@ img {
     border-radius: 1rem;
 }
 
+h2 {
+    margin-left: 4rem;
+}
+
 ul {
     display: flex;
     flex-direction: column;
@@ -63,6 +67,7 @@ ul {
     height: 100%;
     width: 100%;
     box-sizing: border-box;
+    padding-top: 5rem;
 }
 
 li {
@@ -81,15 +86,25 @@ li p {
     border-radius: 1rem;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: max-content;
+    margin-left: 4rem;
+}
+
+.buttons button {
+    width: max-content;
+}
+
 #skip {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
     background-color: var(--bg-sec);
     padding: 0.5rem 1rem;
     border-radius: 1rem;
     cursor: pointer;
     transition: color 0.05s ease-in-out;
+    border: 0.1rem solid var(--border-prim);
 }
 
 #skip:hover {
