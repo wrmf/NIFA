@@ -26,44 +26,52 @@
     </main>
     <script src="../script.js"></script>
     <script>
-    let currentIndex = 0; // Start with the first aircraft
-    
-    const updateAircraftDetails = async (index) => {
-        try {
-            const response = await fetch(`http://localhost:1337/aircraft/${index}`);
-            if (!response.ok) {
-                throw new Error('Aircraft not found');
+        // Function to shuffle an array (Fisher-Yates shuffle)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
             }
-            const data = await response.json();
-            const aircraft = data.correctAircraft; // Access the correctAircraft object
-            console.log(aircraft); // Debug: Log the correctAircraft object
-    
-            // Update the image source
-            const imgElement = document.querySelector('img');
-            if (imgElement) {
-                imgElement.src = `../img/Aircraft/${aircraft.imgSrc}`; // Use imgSrc from correctAircraft
-            } else {
-                console.error('Image element not found');
-            }
-    
-            // Update the manufacturer
-            const manufacturerElement = document.querySelector('#manufacturer');
-            if (manufacturerElement) {
-                manufacturerElement.textContent = aircraft.manufacturer; // Use manufacturer from correctAircraft
-            } else {
-                console.error('Manufacturer element not found');
-            }
-    
-            // Add similar checks and updates for other elements like model, etc.
-        } catch (error) {
-            console.error(error);
+            return array;
         }
-    };
-    
-    document.getElementById('next').addEventListener('click', () => {
-        currentIndex++; // Increment index to show the next aircraft
-        updateAircraftDetails(currentIndex);
-    });
+
+        // Function to fetch and display a new page content
+        let currentPageIndex = 0; // Keep track of the current page index
+        const totalPages = 10; // Total number of pages available
+
+        function fetchAndDisplayPage(pageIndex) {
+            fetch(`http://127.0.0.1:1337/page/${pageIndex}`) // Adjust the fetch URL as necessary
+                .then(response => response.json())
+                .then(pageData => {
+                    // Update the page content
+                    document.querySelector('main').innerHTML = pageData.content;
+
+                    // Update the current page index
+                    currentPageIndex = pageIndex;
+                })
+                .catch(error => console.error('Error fetching page data:', error));
+        }
+
+        // Function to navigate to the next page
+        function nextPage() {
+            if (currentPageIndex < totalPages - 1) {
+                fetchAndDisplayPage(currentPageIndex + 1);
+            }
+        }
+
+        // Function to navigate to the previous page
+        function previousPage() {
+            if (currentPageIndex > 0) {
+                fetchAndDisplayPage(currentPageIndex - 1);
+            }
+        }
+
+        // Event listeners for the "Next" and "Previous" buttons
+        document.getElementById('next').addEventListener('click', nextPage);
+        document.getElementById('previous').addEventListener('click', previousPage);
+
+        // Initial call to load the first page
+        fetchAndDisplayPage(currentPageIndex);
     </script>
 </body>
 </html>
