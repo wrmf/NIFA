@@ -22,4 +22,14 @@ app.get("/random-question", async (req, res) => {
     }
 });
 
+app.get('/api/aircraft/:id', async (req, res) => {
+    const { id } = req.params;
+    const aircraft = await knex('Aircraft').where({ id }).first();
+    if (aircraft) {
+        res.json(aircraft);
+    } else {
+        res.status(404).send('Aircraft not found');
+    }
+});
+
 app.listen(port, () => console.log(`Server is running on port ${port}`));

@@ -26,27 +26,47 @@
     </main>
     <script src="../script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('http://127.0.0.1:1337/random-question')
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data); // Debugging: Log the received data
-                    insertAircraftData(data.correctAircraft);
-                })
-                .catch(error => console.error('Error fetching question data:', error));
-        });
-    
-        function insertAircraftData(aircraft) {
-            console.log(aircraft); // Debugging: Ensure this is being called
-            document.querySelector('img').src = `../img/Aircraft/${aircraft.imgSrc}.png`;
-            document.querySelector('img').alt = `A photo of ${aircraft.model}`;
-            const infoList = document.querySelector('main ul');
-            infoList.innerHTML = `
-                <li><p>Manufacturer: ${aircraft.manufacturer}</p></li>
-                <li><p>Model: ${aircraft.model}</p></li>
-                <li><p>Common name: ${aircraft.altname}</p></li>
+        let currentAircraftId = 1; // Starting with the first aircraft
+
+        async function fetchAircraft(id) {
+            try {
+                const response = await fetch(`/api/aircraft/${id}`);
+                if (!response.ok) {
+                    throw new Error('Aircraft not found');
+                }
+                const aircraft = await response.json();
+                updatePageWithAircraft(aircraft);
+            } catch (error) {
+                console.error('Failed to fetch aircraft:', error);
+            }
+        }
+
+        function updatePageWithAircraft(aircraft) {
+            document.querySelector('img').src = `../img/Aircraft/${aircraft["img src"]}`;
+            document.querySelector('img').alt = `Image of ${aircraft.manufacturer} ${aircraft.model}`;
+            const ul = document.querySelector('main ul');
+            ul.innerHTML = `
+                <li>Manufacturer: ${aircraft.manufacturer}</li>
+                <li>Model: ${aircraft.model}</li>
+                <li>Common Name: ${aircraft.altname}</li>
             `;
         }
+
+        document.querySelector('.left').addEventListener('click', () => {
+            if (currentAircraftId > 1) {
+                currentAircraftId -= 1;
+                fetchAircraft(currentAircraftId);
+            }
+        });
+
+        document.querySelector('.right').addEventListener('click', () => {
+            // Assuming you know the maximum ID or have a way to check if the next ID exists
+            currentAircraftId += 1;
+            fetchAircraft(currentAircraftId);
+        });
+
+        // Initial fetch
+        fetchAircraft(currentAircraftId);
     </script>
 </body>
 </html>
