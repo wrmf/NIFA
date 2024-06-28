@@ -5,6 +5,7 @@ const port = 1337;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('public'));
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -22,16 +23,5 @@ app.get("/random-question", async (req, res) => {
     }
 });
 
-app.use(express.static('public'));
-
-// Route to get the next aircraft question
-app.get('/api/aircraft/next', async (req, res) => {
-    try {
-        const question = await getSequentialQuestion();
-        res.json(question);
-    } catch (error) {
-        res.status(500).send(error.toString());
-    }
-});
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

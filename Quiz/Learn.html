@@ -29,38 +29,6 @@
     </main>
     <script src="../script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const nextButton = document.getElementById('next');
-
-            nextButton.addEventListener('click', function() {
-                fetchAircraft();
-            });
-
-            // Initial fetch
-            fetchAircraft();
-        });
-
-        async function fetchAircraft() {
-            try {
-                // Specify the correct port (1337) in the request URL
-                const response = await fetch('http://127.0.0.1:1337/api/aircraft/next');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const aircraft = await response.json();
-                updateAircraftInfo(aircraft);
-            } catch (error) {
-                console.error('Failed to fetch aircraft:', error);
-            }
-        }
-
-        function updateAircraftInfo(aircraft) {
-            document.querySelector('img').src = "../img/Aircraft/" + aircraft.correctAircraft.imgSrc;
-            document.querySelector('img').alt = aircraft.correctAircraft.model; // Assuming model is a good alt text
-            document.getElementById('Manufacturer').querySelector('p').textContent = aircraft.correctAircraft.manufacturer;
-            document.getElementById('Model').querySelector('p').textContent = aircraft.correctAircraft.model;
-            document.getElementById('Altname').querySelector('p').textContent = aircraft.correctAircraft.altname;
-        }
     </script>
 </body>
 </html>
