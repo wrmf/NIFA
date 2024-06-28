@@ -25,10 +25,33 @@
             <a href="TestPre.html" class="activity">
                 <img src="../img/Activities/portrait.jpg" alt="A photo of me pointing a DSLR at the camera">
                 <h2>Test</h2>
+                <p id="highscore">High score: </p>
             </class=>
             </a>
        </div>
     </main>
     <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to get a cookie by name
+            function getCookie(name) {
+                let nameEQ = name + "=";
+                let ca = document.cookie.split(';');
+                for(let i=0;i < ca.length;i++) {
+                    let c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                }
+                return null;
+            }
+        
+            // Retrieve the high score from the cookie
+            let highScore = getCookie('highScore') || 'No high score yet';
+        
+            // Update the p#highscore element with the high score
+            let highScoreElement = document.getElementById('highscore');
+            highScoreElement.textContent += highScore; // Append the high score to the existing text
+        });
+    </script>
 </body>
 </html>

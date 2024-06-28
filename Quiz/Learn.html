@@ -11,13 +11,8 @@
 <body>
     <main>
         <!-- #Replace with DB-inserted aircraft -->
-        <img src="../img/Aircraft/" alt="">
-        <h2>Information about the aircraft:</h2>
-        <ul>
-            <li id="Manufacturer"><p></p></li>
-            <li id="Model"><p></p></li>
-            <li id="Altname"><p></p></li>
-        </ul>
+        <img src="../img/Aircraft/" alt="Failed to generate aircraft. Please contact @likeusb on discord or email me at linas@likeusb.me">
+        <h2 id="Manufacturer"></h2>
         <div class="dual">
             <!-- #Insert new aircraft, sequentially -->
             <div class="left" id="prev"><p>Previous</p></div>
@@ -41,10 +36,8 @@
                 const questionData = await response.json();
                 const aircraftImage = document.querySelector('img');
                 aircraftImage.src = `../img/Aircraft/${questionData.correctAircraft.imgSrc}.png`;
-                aircraftImage.alt = `Image of ${questionData.correctAircraft.model}`;
-                document.getElementById('Manufacturer').innerHTML = `<p>${questionData.correctAircraft.manufacturer}</p>`;
-                document.getElementById('Model').innerHTML = `<p>${questionData.correctAircraft.model}</p>`;
-                document.getElementById('Altname').innerHTML = `<p>${questionData.correctAircraft.altname}</p>`;
+                aircraftImage.alt = `Image ${questionData.correctAircraft.model}`;
+                document.getElementById('Manufacturer').innerHTML = `${questionData.correctAircraft.manufacturer} ${questionData.correctAircraft.model} ${questionData.correctAircraft.altname}`;
             } catch (error) {
                 console.error('Error fetching question data:', error);
             }

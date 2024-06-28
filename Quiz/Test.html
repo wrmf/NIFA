@@ -45,7 +45,7 @@
     </main>
     <script src="../script.js"></script>
     <script>
-        // Function to handle answer selection
+    // Function to handle answer selection
     function handleAnswerSelection(event) {
         if (event.target.tagName === 'P') { // Ensure we're clicking on the <p> element
             const answers = event.target.closest('ul').querySelectorAll('p');
@@ -54,15 +54,22 @@
         }
     }
 
+    // Initialize correct streak counter 
+    let correctStreak = 0;
+    let highScore = parseInt(getCookie('highScore')) || 0; // Initialize high score from cookie or to 0 if not set
+
     // Function to submit answers
     function handleSubmit() {
         const answers = document.querySelectorAll('ul li p.selected'); // Only consider selected answers
+        let allCorrect = true; // Assume all answers are correct initially
+
         answers.forEach(answer => {
             answer.classList.remove('selected'); // Remove 'selected' class
             if (answer.getAttribute('data-is-correct') === 'true') {
                 answer.classList.add('correct'); // Correct answer
             } else {
                 answer.classList.add('wrong'); // Incorrect answer
+                allCorrect = false; // Found an incorrect answer
             }
         });
 
@@ -72,32 +79,76 @@
                 answer.classList.add('correct'); // Ensure the correct answer is always highlighted
             }
         });
+
+        // Update correct streak counter
+        if (allCorrect && answers.length === 3) { // Check if all answers are correct and there are exactly 3 answers
+            correctStreak++;
+        } else {
+            correctStreak = 0; // Reset streak if any answer is wrong
+        }
+
+        // Update high score if current streak is greater
+        if (correctStreak > highScore) {
+            highScore = correctStreak;
+            setHighScoreCookie(highScore);
+        }
+
+        // Store the correct streak in a cookie
+        setCorrectStreakCookie(correctStreak);
     }
 
-    // Function to reset classes for the next question
-    function resetAnswerClasses() {
-        const answers = document.querySelectorAll('ul li p');
-        answers.forEach(answer => {
-            answer.classList.remove('selected', 'correct', 'wrong'); // Remove all related classes
+    // Function to set the correct streak cookie
+    function setCorrectStreakCookie(streak) {
+        const d = new Date();
+        d.setTime(d.getTime() + (30*24*60*60*1000)); // Set cookie to expire in 30 days
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = "correctStreak=" + streak + ";" + expires + ";path=/";
+    }
+
+    // Function to set the high score cookie
+    function setHighScoreCookie(score) {
+        const d = new Date();
+        d.setTime(d.getTime() + (365*24*60*60*1000)); // Set cookie to expire in 1 year
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = "highScore=" + score + ";" + expires + ";path=/";
+    }
+
+    // Function to get a cookie by name
+    function getCookie(name) {
+        let nameEQ = name + "=";
+        let ca = document.cookie.split(';');
+        for(let i=0;i < ca.length;i++) {
+            let c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+
+        // Function to reset classes for the next question
+        function resetAnswerClasses() {
+            const answers = document.querySelectorAll('ul li p');
+            answers.forEach(answer => {
+                answer.classList.remove('selected', 'correct', 'wrong'); // Remove all related classes
+            });
+        }
+
+        document.querySelector('main').addEventListener('click', function(event) {
+            handleAnswerSelection(event);
         });
-    }
 
-    document.querySelector('main').addEventListener('click', function(event) {
-        handleAnswerSelection(event);
-    });
+        // Add event listener to the submit button
+        document.getElementById('submit').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default form submission if applicable
+            handleSubmit();
+        });
 
-    // Add event listener to the submit button
-    document.getElementById('submit').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent default form submission if applicable
-        handleSubmit();
-    });
-
-    // Modify the existing skip button event listener to also reset classes
-    document.getElementById('skip').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent default action if applicable
-        resetAnswerClasses();
-        fetchAndDisplayQuestion(); // Call the original function to fetch and display the next question
-    });
+        // Modify the existing skip button event listener to also reset classes
+        document.getElementById('skip').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default action if applicable
+            resetAnswerClasses();
+            fetchAndDisplayQuestion(); // Call the original function to fetch and display the next question
+        });
 
         // Function to shuffle an array (Fisher-Yates shuffle)
         function shuffleArray(array) {

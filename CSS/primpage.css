@@ -16,9 +16,11 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    justify-content: space-between;
 }
 
-.activity h2 {
+.activity h2,
+.activity p {
     z-index: 9;
     box-shadow: 0 0 0.5rem 0.5rem var(--bg-sec);
     background-color: var(--bg-sec);
