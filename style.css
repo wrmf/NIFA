@@ -12,6 +12,7 @@
     --bg-sec: rgb(29, 30, 25);
     --text-prim: white;
     --text-acc: rgb(245, 77, 40);
+    --text-right: rgb(0, 255, 0);
     --text-warn: red;
     --border-prim: rgb(92, 62, 14);
 }
@@ -120,3 +121,19 @@ button {
 input:focus {
     outline: none;
 }
+
+p.selected {
+    border: 0.2rem solid var(--border-prim);
+    color: var(--text-acc);
+}
+
+p.correct {
+    border: 0.2rem solid var(--text-right);
+    color: var(--text-right);
+}
+
+p.wrong {
+    border: 0.2rem solid var(--text-warn);
+    color: var(--text-warn);
+}
+

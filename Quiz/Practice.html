@@ -47,6 +47,59 @@
     </main>
     <script src="../script.js"></script>
     <script>
+        // Function to handle answer selection
+    function handleAnswerSelection(event) {
+        if (event.target.tagName === 'P') { // Ensure we're clicking on the <p> element
+            const answers = event.target.closest('ul').querySelectorAll('p');
+            answers.forEach(answer => answer.classList.remove('selected')); // Remove 'selected' from all answers
+            event.target.classList.add('selected'); // Add 'selected' to clicked answer
+        }
+    }
+
+    function handleSubmit() {
+        const answers = document.querySelectorAll('.questions ul li p.selected'); // Only consider selected answers
+        answers.forEach(answer => {
+            answer.classList.remove('selected'); // Remove 'selected' class
+            if (answer.getAttribute('data-is-correct') === 'true') {
+                answer.classList.add('correct'); // Correct answer
+            } else {
+                answer.classList.add('wrong'); // Incorrect answer
+            }
+        });
+
+        // Optionally, highlight the correct answer if not selected
+        document.querySelectorAll('.questions ul li p').forEach(answer => {
+            if (answer.getAttribute('data-is-correct') === 'true') {
+                answer.classList.add('correct'); // Ensure the correct answer is always highlighted
+            }
+        });
+    }
+
+    // Add event listener to the submit button
+    document.getElementById('submit').addEventListener('click', handleSubmit);
+
+    // Function to reset classes for the next question
+    function resetAnswerClasses() {
+        const answers = document.querySelectorAll('.questions ul li p');
+        answers.forEach(answer => {
+            answer.classList.remove('selected', 'correct', 'wrong'); // Remove all related classes
+        });
+    }
+
+    // Add event listeners to answers for selection
+    document.querySelectorAll('.questions ul').forEach(ul => {
+        ul.addEventListener('click', handleAnswerSelection);
+    });
+
+    // Add event listener to the submit button
+    document.getElementById('submit').addEventListener('click', handleSubmit);
+
+    // Modify the existing skip button event listener to also reset classes
+    document.getElementById('skip').removeEventListener('click', fetchAndDisplayQuestion); // Remove the existing event listener
+    document.getElementById('skip').addEventListener('click', () => {
+        resetAnswerClasses();
+        fetchAndDisplayQuestion(); // Call the original function to fetch and display the next question
+    });
         // Function to shuffle an array (Fisher-Yates shuffle)
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -56,98 +109,40 @@
             return array;
         }
         
+        // Function to fetch and display a new aircraft question
+    function fetchAndDisplayQuestion() {
+        fetch('http://127.0.0.1:1337/random-question') // Adjust the fetch URL as necessary
+            .then(response => response.json())
+            .then(questionData => {
+                // Update the aircraft image
+                const aircraftImage = document.querySelector('main img');
+                aircraftImage.src = `../img/Aircraft/${questionData.correctAircraft.imgSrc}.png`;
+                aircraftImage.alt = `A photo of ${questionData.correctAircraft.model}`;
+
+                // Shuffle and display manufacturer answers
+                let manufacturerAnswers = shuffleArray([...questionData.wrongAnswers, questionData.correctAircraft]);
+                document.querySelectorAll('.questions ul')[0].innerHTML = manufacturerAnswers.map(answer =>
+                    `<li><p data-is-correct="${answer.manufacturer === questionData.correctAircraft.manufacturer}">${answer.manufacturer}</p></li>`
+                ).join('');
+
+                // Shuffle and display model answers
+                let modelAnswers = shuffleArray([...questionData.wrongAnswers, questionData.correctAircraft]);
+                document.querySelectorAll('.questions ul')[1].innerHTML = modelAnswers.map(answer =>
+                    `<li><p data-is-correct="${answer.model === questionData.correctAircraft.model}">${answer.model}</p></li>`
+                ).join('');
+
+                // Shuffle and display common name answers
+                let commonNameAnswers = shuffleArray([...questionData.wrongAnswers, questionData.correctAircraft]);
+                document.querySelectorAll('.questions ul')[2].innerHTML = commonNameAnswers.map(answer =>
+                    `<li><p data-is-correct="${answer.altname === questionData.correctAircraft.altname}">${answer.altname}</p></li>`
+                ).join('');
+            })
+            .catch(error => console.error('Error fetching question data:', error));
+    }
+        
         // Event listener for the "Skip" button
         document.getElementById('skip').addEventListener('click', fetchAndDisplayQuestion);
         
-        // Initial call to load the first question
-        fetchAndDisplayQuestion();
-
-        let correctAnswers = {}; // Object to store the correct answers
-
-        function fetchAndDisplayQuestion() {
-            fetch('http://127.0.0.1:1337/random-question')
-                .then(response => response.json())
-                .then(questionData => {
-                    // Update the aircraft image
-                    const aircraftImage = document.querySelector('main img');
-                    aircraftImage.src = `../img/Aircraft/${questionData.correctAircraft.imgSrc}.png`;
-                    aircraftImage.alt = `A photo of ${questionData.correctAircraft.model}`;
-        
-                    // Shuffle and display manufacturer answers
-                    let manufacturerAnswers = shuffleArray([...questionData.wrongAnswers, questionData.correctAircraft]);
-                    document.querySelectorAll('.questions ul')[0].innerHTML = manufacturerAnswers.map(answer => `<li><p>${answer.manufacturer}</p></li>`).join('');
-        
-                    // Shuffle and display model answers
-                    let modelAnswers = shuffleArray([...questionData.wrongAnswers, questionData.correctAircraft]);
-                    document.querySelectorAll('.questions ul')[1].innerHTML = modelAnswers.map(answer => `<li><p>${answer.model}</p></li>`).join('');
-        
-                    // Shuffle and display common name answers
-                    let commonNameAnswers = shuffleArray([...questionData.wrongAnswers, questionData.correctAircraft]);
-                    document.querySelectorAll('.questions ul')[2].innerHTML = commonNameAnswers.map(answer => `<li><p>${answer.altname}</p></li>`).join('');
-
-                    // Store correct answers for comparison
-                    correctAnswers = {
-                        manufacturer: questionData.correctAircraft. manufacturer,
-                        model: questionData.correctAircraft.model,
-                        altname: questionData.correctAircraft.altname,
-                    };
-
-                    // Add click event listeners to each answer
-                    const questionLists = document.querySelectorAll('.  questions ul');
-                    questionLists.forEach((list, index) => {
-                        list.addEventListener('click', function(event) {
-                            if (event.target.tagName === 'P') {
-                                // Remove existing selections
-                                list.querySelectorAll('li').forEach(li =>   li.classList.remove('selected'));
-                                // Mark the clicked answer as selected
-                                event.target.parentElement.classList.add    ('selected');
-                            }
-                        });
-                    });
-                })
-                .catch(error => console.error('Error fetching question  data:', error));
-        }
-
-        // Function to check answers and apply classes
-        function checkAnswers() {
-            const selectedAnswers = document.querySelectorAll('.questions   ul .selected p');
-            if (selectedAnswers.length === 3) { // Ensure an answer is  selected for each question
-                selectedAnswers.forEach((answer, index) => {
-                    let answerType;
-                    switch (index) {
-                        case 0: answerType = 'manufacturer'; break;
-                        case 1: answerType = 'model'; break;
-                        case 2: answerType = 'altname'; break;
-                    }
-                    if (answer.textContent === correctAnswers[answerType])  {
-                        answer.parentElement.classList.add('right');
-                    } else {
-                        answer.parentElement.classList.add('wrong');
-                        // Also highlight the correct answer
-                        document.querySelectorAll(`.questions ul:nth-child  (${index + 1}) li p`).forEach(p => {
-                            if (p.textContent === correctAnswers    [answerType]) {
-                                p.parentElement.classList.add('right');
-                            }
-                        });
-                    }
-                });
-            } else {
-                console.error('Please select an answer for each question.   ');
-            }
-        }
-
-        // Add event listener to the Submit button
-        document.getElementById('submit').addEventListener('click',     checkAnswers);
-
-        // Add event listener to the Skip button
-        document.getElementById('skip').addEventListener('click', function  () {
-            fetchAndDisplayQuestion();
-            // Reset the classes for new questions
-            document.querySelectorAll('.questions ul li').forEach(li => {
-                li.classList.remove('selected', 'right', 'wrong');
-            });
-        });
-
         // Initial call to load the first question
         fetchAndDisplayQuestion();
     </script>
