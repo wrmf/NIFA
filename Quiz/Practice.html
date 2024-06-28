@@ -50,6 +50,43 @@
     </main>
     <script src="../script.js"></script>
     <script>
+        // Assuming there's already a mechanism to determine if an answer is correct
+    // Initialize score and question number
+    let score = 0;
+    let questionNumber = 1;
+
+    // Function to update score and question number display
+    function updateScoreAndQuestionDisplay() {
+        const scoreDisplay = document.getElementById('score').querySelector('p');
+        const questionDisplay = document.getElementById('qindicator').querySelector('p');
+        scoreDisplay.textContent = `Score: ${score}`;
+        questionDisplay.textContent = `Question ${questionNumber}`;
+    }
+
+    // Call this function whenever a question is correctly answered
+    function correctAnswer() {
+        score++;
+        updateScoreAndQuestionDisplay();
+    }
+
+    // Call this function whenever a new question is fetched
+    function newQuestionFetched() {
+        questionNumber++;
+        updateScoreAndQuestionDisplay();
+    }
+
+    // Initial display update
+    updateScoreAndQuestionDisplay();
+
+    // Example usage (you'll need to integrate these calls with your existing code)
+    // correctAnswer(); // Call this when a correct answer is selected
+    // newQuestionFetched(); // Call this when fetching a new question
+
+    // Update the event listener for the "Skip" button to increment question number
+    document.getElementById('skip').addEventListener('click', function() {
+        newQuestionFetched();
+        fetchAndDisplayQuestion(); // Assuming this function fetches and displays a new question
+    });
         // Function to handle answer selection
     function handleAnswerSelection(event) {
         if (event.target.tagName === 'P') { // Ensure we're clicking on the <p> element
@@ -59,24 +96,35 @@
         }
     }
 
-    function handleSubmit() {
-        const answers = document.querySelectorAll('.questions ul li p.selected'); // Only consider selected answers
-        answers.forEach(answer => {
-            answer.classList.remove('selected'); // Remove 'selected' class
-            if (answer.getAttribute('data-is-correct') === 'true') {
-                answer.classList.add('correct'); // Correct answer
-            } else {
-                answer.classList.add('wrong'); // Incorrect answer
-            }
-        });
+function handleSubmit() {
+    const selectedAnswers = document.querySelectorAll('.questions ul li p.selected'); // Only consider selected answers
+    let correctSelectedCount = 0; // Count of correctly selected answers
+    const totalCorrectAnswers = document.querySelectorAll('.questions ul li p[data-is-correct="true"]').length; // Total correct answers
 
-        // Optionally, highlight the correct answer if not selected
-        document.querySelectorAll('.questions ul li p').forEach(answer => {
-            if (answer.getAttribute('data-is-correct') === 'true') {
-                answer.classList.add('correct'); // Ensure the correct answer is always highlighted
-            }
-        });
+    selectedAnswers.forEach(answer => {
+        answer.classList.remove('selected'); // Remove 'selected' class
+        if (answer.getAttribute('data-is-correct') === 'true') {
+            answer.classList.add('correct'); // Correct answer
+            correctSelectedCount++; // Increment count for correct selected answer
+        } else {
+            answer.classList.add('wrong'); // Incorrect answer
+        }
+    });
+
+    // Check if all selected answers are correct and match the total number of correct answers
+    if (correctSelectedCount === selectedAnswers.length && correctSelectedCount === totalCorrectAnswers) {
+        correctAnswer(); // Increment score only if all selected answers are correct
     }
+
+    // Optionally, highlight the correct answer if not selected
+    document.querySelectorAll('.questions ul li p').forEach(answer => {
+        if (answer.getAttribute('data-is-correct') === 'true') {
+            answer.classList.add('correct'); // Ensure the correct answer is always highlighted
+        }
+    });
+
+    newQuestionFetched(); // Increment question number for the next question
+}
 
     // Add event listener to the submit button
     document.getElementById('submit').addEventListener('click', handleSubmit);
