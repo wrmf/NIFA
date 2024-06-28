@@ -23,5 +23,14 @@ app.get("/random-question", async (req, res) => {
     }
 });
 
+app.get("/sequential-question", async (req, res) => {
+    try {
+        const question = await db.getSequentialQuestion();
+        res.json(question);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching a sequential question');
+    }
+});
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

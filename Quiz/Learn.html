@@ -29,6 +29,28 @@
     </main>
     <script src="../script.js"></script>
     <script>
+        async function fetchAndDisplayQuestion() {
+            try {
+                const response = await fetch('http://127.0.0.1:1337/sequential-question');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                if (!response.headers.get('content-type')?.includes('application/json')) {
+                    throw new Error('Received non-JSON response from server');
+                }
+                const questionData = await response.json();
+                const aircraftImage = document.querySelector('img');
+                aircraftImage.src = `../img/Aircraft/${questionData.correctAircraft.imgSrc}.png`;
+                aircraftImage.alt = `Image of ${questionData.correctAircraft.model}`;
+                document.getElementById('Manufacturer').innerHTML = `<p>${questionData.correctAircraft.manufacturer}</p>`;
+                document.getElementById('Model').innerHTML = `<p>${questionData.correctAircraft.model}</p>`;
+                document.getElementById('Altname').innerHTML = `<p>${questionData.correctAircraft.altname}</p>`;
+            } catch (error) {
+                console.error('Error fetching question data:', error);
+            }
+        }
+
+        fetchAndDisplayQuestion();
     </script>
 </body>
 </html>

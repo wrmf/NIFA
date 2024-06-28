@@ -36,6 +36,27 @@ async function getRandomQuestion() {
     return question;
 }
 
+let currentIndex = 0;
+
+async function getSequentialQuestion() {
+    const aircraftList = await knex('Aircraft').select('*').orderBy('id');
+    if (currentIndex >= aircraftList.length) {
+        currentIndex = 0;
+    }
+    const aircraft = aircraftList[currentIndex];
+    currentIndex++;
+
+    return {
+        correctAircraft: {
+            imgSrc: aircraft["img src"],
+            manufacturer: aircraft.manufacturer,
+            model: aircraft.model,
+            altname: aircraft.altname,
+        }
+    };
+}
+
 module.exports = {
     getRandomQuestion,
+    getSequentialQuestion,
 };
