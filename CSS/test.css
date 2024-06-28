@@ -49,6 +49,19 @@ li p {
     border-radius: 1rem;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: max-content;
+    margin-left: 4rem;
+    align-items: center;
+}
+
+.buttons button {
+    width: max-content;
+}
+
 #skip {
     background-color: var(--bg-sec);
     padding: 0.5rem 1rem;

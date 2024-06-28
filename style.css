@@ -137,3 +137,12 @@ p.wrong {
     color: var(--text-warn);
 }
 
+a.leave {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: var(--bg-sec);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: 0.1rem solid var(--border-prim);
+}
