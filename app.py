@@ -3,6 +3,7 @@ import sys
 from modules.questions import *
 from fileIO import *
 from password import password
+import numpy as np
 import pandas as pd
 import importlib
 import string
