@@ -23,11 +23,11 @@ Handley Page,K.2,Victor,"Hawker Siddeley, Sud Aviation, Boeing","RC-135W, Tp85, 
 Handley Page,HP.54,Harrow,"Amiot, Bloch, Gotha","Go 244, 143, MB.200","Bretagne, Foudroyant, No Name",Bomber
 Cessna,650,Citation III,"Aerospatile, Hawker Siddeley, Dassault","HS. 125, SN601, 10","Corvette, Dominie T.1, Falcon",Private Jet
 Douglas,DC-8-72,No Name,"Boeing, Ilyushin, Airbus","A340-200, 707-320B, Il-96-300","Airline, Nope, Camber",Transport
-Piper,100i,Pilot,"Cirrus, Ruschmeyer, Robin","R90, R1180T, SR20","Aiglon, None, Tiara",General Aviation
+Piper,100i,Pilot,"Cirrus, Ruschmeyer, Robin","R90, R1180T, SR20","Aiglon, No Name, Tiara",General Aviation
 Eurocopter,EC725,Caracal,"Mil, Agusta, Aerospatile","AS-61R, Mi-8M, Mi-35","Hind, No Name, Hip",Military Helicopter
 Cessna,P206,Super Skylane,"Partenavia, Saab, Aero Commander","T210F, P66C, 207","Centurion, Charlie, No Name",General Aviation
 Agusta Westland,AW169,No Name,"Bell, Airbus Helicopters, Aerospatile","H175, AW109, AS365","Lakota, Trekker, Dauphin II",Civilian Helicopter
-HAL,N-LCA,Tejas,"IAI, Dassault, Eurofighter","M, 2000, No Name","Typhoon, Rafale, Lavi",Fighter Jet
+HAL,N-LCA,Tejas,"IAI, Dassault, Eurofighter","M, 2000, No Model","Typhoon, Rafale, Lavi",Fighter Jet
 Republic,P-47,Thunderbolt,"Hawker, Nakajima, Macchi","C.205, Mk.II, Ki.84","Hayate, Veltro, Hurricane",Warbird
 Aero Spacelines,B377MG,Mini Guppy,"Douglas, Canadair, Bristol","175, CL-44, DC-6","No Name, Britannia, Cargomaster",Transport
 Blackburn,S1,Buccaneer,"Armstrong Whitworth, Gloster, Avro Canada","CF-100, FAW.9, F.3","Canuck, Meteor, Javelin",Fighter Jet
@@ -59,121 +59,181 @@ Rockwell,B-1B,Lancer,"North American, General Dynamics, Boeing","XB-70, B52, F-1
 Piaggio,P-166M,No Name,"OMA SUD, Softex-Aero, Margański & Mysłowski","EM-11, V-24, No Model","Orka, Nope, Skycar",General Aviation
 Cessna,210,Centurion,"Daher, Kitfox, Tecnam","P92, S7, No Model","STI, Eaglet, Kodiak",General Aviation
 Repülögépgyár,No Model,Levente II,"Boeing, Taylorcraft, Piper","J-3, T-5, J-2","Cub, Thorp, Grasshopper",General Aviation
-Cessna,310,None,"Piper, Grumman, Beechcraft","GA-7, 320E, PA-30","Twin Comanche, Cougar, Skyknight",General Aviation
+Cessna,310,No Name,"Piper, Grumman, Beechcraft","GA-7, 320E, PA-30","Twin Comanche, Cougar, Skyknight",General Aviation
 Eurocopter,EC-225,Super Puma,"Sikorsky, Bell, PZL Swidnik","W-3, S-70, S-65","Fire Hawk, Fire Stallion, Anakonda",Civilian Helicopter
 Kaman,SH-2G,Super Seasprite,"Aerospatile, Westland, Sikorsky","SA-360, HAS.3, SH-60B","Sea Hawk, Dauphin, Lynx",Military Helicopter
 Piper,PA-38,Tomahawk,"Aerotec, Beechcraft, ERCO","77, 415C, A-122","Skipper, Uirapuru, Ercoupe",General Aviation
-Avro,C.1,York,"Curtiss-Wright, SNCAC, Blackburn","AS-57, C-76, None","Beverley, Caravan, None",Military Heavy
+Avro,C.1,York,"Curtiss-Wright, SNCAC, Blackburn","AS-57, C-76, No Model","Beverley, Caravan, No Name",Military Heavy
 Agusta,A-129,Mangusta,"Denel, Eurocopter, Boeing","AH-2, AH-64, 665","Apache, Rooivalk, Tiger",Military Helicopter
 Tupolev,TU-124,Cookpot,"De Havilland, Handley-Page, British Aerospace","K.2, DH-106, MR.2","Nimrod, Comet, Victor",Military Heavy
-Harbin,SH-5,None,"Martin, Shinmaywa, Kawnishi","P5M, US-1, H8K","Emily, Marlin, Sealand",Seaplane
-Cessna,207,Stationair 8,"Piper, PAC, Pilatus","750, 208, PA-32R","Saratoga, Caravan, None",General Aviation
-Vultee,P-66,Vanguard,"Commonwealth, Seversky, Brewster","P-35, F2A, CA-13","Buffalo, None, Boomerang",Warbird
-Sukhoi,100,Superjet,"Embraer, Fokker, Antonov","AN-148, 190, None","Friendship, None, Amazon",Transport
+Harbin,SH-5,No Name,"Martin, Shinmaywa, Kawnishi","P5M, US-1, H8K","Emily, Marlin, Sealand",Seaplane
+Cessna,207,Stationair 8,"Piper, PAC, Pilatus","750, 208, PA-32R","Saratoga, Caravan, No Name",General Aviation
+Vultee,P-66,Vanguard,"Commonwealth, Seversky, Brewster","P-35, F2A, CA-13","Buffalo, No Name, Boomerang",Warbird
+Sukhoi,100,Superjet,"Embraer, Fokker, Antonov","AN-148, 190, No Model","Friendship, No Name, Amazon",Transport
 English Electric,F.6,Lightning,"McDonnell, Sukhoi, Mikoyan","F3H, Su-9, Su-17","Fishpot, Fitter, Demon",Fighter Jet
-Piper,PA-30,Twin Comanche,"Cessna, Grumman, Beechcraft","GA-7, 320E, 310","None, Cougar, Skyknight",General Aviation
+Piper,PA-30,Twin Comanche,"Cessna, Grumman, Beechcraft","GA-7, 320E, 310","No Name, Cougar, Skyknight",General Aviation
 Sikorsky,S-70,Fire Hawk,"Eurocopter, Bell, PZL Swindik","W-3, S-65, EC-225","Fire Stallion, Super Puma, Anakonda",Military Helicopter
 Grumman,KA-6D,Intruder,"Lockheed, Douglas, McDonnell","A4D-2, KA-3B, S-3","Skyhawk, Viking, Skywarrior",Fighter Jet
-Aerotec,A-122,Uirapuru,"Piper, Beechcraft, ERCO","PA-38, 415C, None","Skipper, Ercoupe, Tomahawk",General Aviation
-SNCAC,NC.211,None,"Avro, Curtiss-Wright, Blackburn","AS-57, C.1, C-76","York, Beverley, Caravan",Military Heavy
+Aerotec,A-122,Uirapuru,"Piper, Beechcraft, ERCO","PA-38, 415C, No Model","Skipper, Ercoupe, Tomahawk",General Aviation
+SNCAC,NC.211,No Name,"Avro, Curtiss-Wright, Blackburn","AS-57, C.1, C-76","York, Beverley, Caravan",Military Heavy
 North American Rockwell,65,Sabreliner,"IAI, Aerospatile, Dassault","1125, SN-601, 10","Astra, Falcon, Corvette",Private Jet
 De Havilland,DH-106,Comet,"Handley Page, British Aerospace, Tupolev","K.2, Tu-124, MR.2","Cookpot, Nimrod, Victor",Transport
-Martin,P5M,Marlin,"Harbin, Shinmaywa, Kawnishi","US-1, SH-5, H8K","Emily, None, Sealand",Military Heavy
-Dornier,Do-328,None,"De Havilland Canada, Saab, Bombardier","CRJ-200, DHC-8, 2000","Global Express, Global 5000, Dash-8",Transport
-Commonwealth,CA-13,Boomerang,"Seversky, Brewster, Vultee","P-35, F2A, P-66","Buffalo, None, Vanguard",Warbird
-Fokker,100,None,"Embraer, Sukhoi, Antonov","145, 190, An-148","Friendship, Superjet, Amazon",Transport
+Martin,P5M,Marlin,"Harbin, Shinmaywa, Kawnishi","US-1, SH-5, H8K","Emily, No Name, Sealand",Military Heavy
+Dornier,Do-328,No Name,"De Havilland Canada, Saab, Bombardier","CRJ-200, DHC-8, 2000","Global Express, Global 5000, Dash-8",Transport
+Commonwealth,CA-13,Boomerang,"Seversky, Brewster, Vultee","P-35, F2A, P-66","Buffalo, No Name, Vanguard",Warbird
+Fokker,100,No Name,"Embraer, Sukhoi, Antonov","145, 190, An-148","Friendship, Superjet, Amazon",Transport
 Dassault,F.1,Mirage,"Nanchang, Soko, Sepecat","J22, Q-5, GR.1","Jaguar, Fantan, Orao",Fighter Jet
-Grumman,GA-7,Cougar,"Cessna, Piper, Beechcraft","320E, 310, PA-30","None, Twin Comanche, Skyknight",General Aviation
+Grumman,GA-7,Cougar,"Cessna, Piper, Beechcraft","320E, 310, PA-30","No Name, Twin Comanche, Skyknight",General Aviation
 Sikorsky,S-65,Fire Stallion,"Eurocopter, Bell, PZL Swindik","W-3, S-70, EC-225","Fire Hawk, Super Puma, Anakonda",Military Helicopter
 Northrop,F-5N,Tiger II,"Lockheed Martin, McDonnell-Douglas, IAI","F-16, F-21, T-38","Talon, Fighting Falcon, Kfir",Fighter Jet
 ERCO,415C,Ercoupe,"Aerotec, Piper, Beechcraft","PA-38, 77, A-122","Skipper, Uirapuru, Tomahawk",General Aviation
-Curtiss-Wright,C-76,Caravan,"Avro, SNCAC, Blackburn","AS-57, C.1, NC.211","York, Beverley, None",Military Heavy
-GAF,N22,Nomad,"CASA, Dornier, Dehavilland Canada","DHC-6, C-212, Do-228","None, Aviocar, Twin Otter",Utility
+Curtiss-Wright,C-76,Caravan,"Avro, SNCAC, Blackburn","AS-57, C.1, NC.211","York, Beverley, No Name",Military Heavy
+GAF,N22,Nomad,"CASA, Dornier, Dehavilland Canada","DHC-6, C-212, Do-228","No Name, Aviocar, Twin Otter",Utility
 Handley Page,K.2,Victor,"De Havilland Canada, British Aerospace, Tupolev","DH-106, Tu-124, MR.2","Cookpot, Nimrod, Comet",Bomber
-Kawanishi,H8K,Emily,"Harbin, Martin, Shinmaywa","P5M, US-1, SH-5","Marlin, None, Sealand",Seaplane
-Bell,429,Global Ranger,"Eurocopter, MBB, Agusta Westland","EC-135, 407, AW119","Colibri, Koala, None",Civilian Helicopter
-Seversky,P-35,None,"Commonwealth, Brewster, Vultee","F2A, P-66, CA-13","Buffalo, Boomerang, Vanguard",Warbird
-Antonov,An-148,None,"Embraer, Fokker, Sukhoi","145, 190, 100","Friendship, Superjet, Amazon",Transport
+Kawanishi,H8K,Emily,"Harbin, Martin, Shinmaywa","P5M, US-1, SH-5","Marlin, No Name, Sealand",Seaplane
+Bell,429,Global Ranger,"Eurocopter, MBB, Agusta Westland","EC-135, 407, AW119","Colibri, Koala, No Name",Civilian Helicopter
+Seversky,P-35,No Name,"Commonwealth, Brewster, Vultee","F2A, P-66, CA-13","Buffalo, Boomerang, Vanguard",Warbird
+Antonov,An-148,No Name,"Embraer, Fokker, Sukhoi","145, 190, 100","Friendship, Superjet, Amazon",Transport
 Douglas,BTD,Destroyer,"Ilyushin, Yakolev, North American","Yak-28, A-3, B-45","Brewer, Tornado, Skywarrior",Warbird
-Cessna,320E,Skyknight,"Piper, Grumman, Beechcraft","GA-7, 310, PA-30","None, Twin Comanche, Cougar",General Aviation
+Cessna,320E,Skyknight,"Piper, Grumman, Beechcraft","GA-7, 310, PA-30","No Name, Twin Comanche, Cougar",General Aviation
 PZL Swidnik,W-3,Anakonda,"Sikorsky, Eurocopter, Bell","S-70, S-65, EC-225","Fire Hawk, Fire Stallion, Super Puma",Military Helicopter
 Douglas,A-1D,Skyraider,"Republic, Grumman, Chance-Vought","P-47, F4U, F8F","Bearcat, Thunderbolt, Corsair",Warbird
 Beechcraft,77,Skipper,"Aerotec, Piper, ERCO","PA-38, 415C, A-122","Uirapuru, Ercoupe, Tomahawk",General Aviation
-Blackburn,C.1,Beverley,"Avro, Curtiss-Wright, SNCAC","AS-57, C-76, NC.211","York, Caravan, None",Military Heavy
-EADS/CASA,HC-144A,Ocean Sentry,"Lockheed Martin, Alenia, Transall","C-27J, C-160, HC-130J","Super Hercules, None, Spartan",Utility
+Blackburn,C.1,Beverley,"Avro, Curtiss-Wright, SNCAC","AS-57, C-76, NC.211","York, Caravan, No Name",Military Heavy
+EADS/CASA,HC-144A,Ocean Sentry,"Lockheed Martin, Alenia, Transall","C-27J, C-160, HC-130J","Super Hercules, No Name, Spartan",Utility
 British Aerospace,MR.2,Nimrod,"De Havilland Canada, Handley-Page, Tupolev","K.2, DH-106, Tu-124","Cookpot, Comet, Victor",Military Heavy
-Shinmaywa,US-1,None,"Harbin, Martin, Kawanishi","P5M, SH-5, H8K","Emily, Marlin, Sealand",Seaplane
+Shinmaywa,US-1,No Name,"Harbin, Martin, Kawanishi","P5M, SH-5, H8K","Emily, Marlin, Sealand",Seaplane
 Eurocopter,H-72A,Lakota,"MD Helicopters, Agusta, Bell","MH-68A, 427, MH-90","Stingray, Explorer, Enforcer",Military Helicopter
-Bewster,F2A,Buffalo,"Commonwealth, Seversky, Vultee","P-66, CA-13, P-35 ","None, Boomerang, Vanguard",Warbird
-Embraer,190,None,"Fokker, Sukhoi, Antonov","145, An-148, 100","Friendship, Superjet, Amazon",Transport
+Bewster,F2A,Buffalo,"Commonwealth, Seversky, Vultee","P-66, CA-13, P-35 ","No Name, Boomerang, Vanguard",Warbird
+Embraer,190,No Name,"Fokker, Sukhoi, Antonov","145, An-148, 100","Friendship, Superjet, Amazon",Transport
 Sukhoi,Su-34,Flanker,"Boeing, Mikoyan, Grumman","Mig-29, F-14, F/A-18","Super Hornet, Fulcrum, Tomcat",Fighter Jet
 Ilyushin,Il-2,Bark,"Junkers, Yakolev, Mikoyan","Yak-3, Ju-87, Mig-3","Bank, Bear, Stuka",Warbird
 Yeoman-Hanes,YA-1,Cropmaster 250,"Auster, Piper, Cessna","PA-25, B-8, 188","AGPickup, Agricola, Pawnee",Crop Duster
 Cessna,336,Skymaster,"Piper, Beechcraft, Cirrus","J-3, 172, 182","Skylane, Skyhawk, Cub",General Aviation
-British Aerospace,ATP,None,"Fairchild Swearington, Saab, De Havilland Canada","None, 2000, Nope","Dash-8, Nope, Metroliner",Transport
-Mooney,M20E,None,"Piper, Beechcraft, Cessna","400, G-36, PA-28R","TTX, Bonanza, Arrow",General Aviation
-Lockheed,L-10-11,TriStar,"Douglas, Boeing, McDonnell Douglas","DC-10, MD-11, 727","None, Airline, Camber",Transport
+British Aerospace,ATP,No Name,"Fairchild Swearington, Saab, De Havilland Canada","No Model, 2000, Nope","Dash-8, Nope, Metroliner",Transport
+Mooney,M20E,No Name,"Piper, Beechcraft, Cessna","400, G-36, PA-28R","TTX, Bonanza, Arrow",General Aviation
+Lockheed,L-10-11,TriStar,"Douglas, Boeing, McDonnell Douglas","DC-10, MD-11, 727","No Name, Airline, Camber",Transport
 Slingsby,T67,Firefly,"Sportavia-Pützer, Sling Aircraft, Cessna","RS 180, 4, T-37","Sportsman, Sling, Tweet",General Aviation
 Grumman,F-14,Tomcat,"Boeing, Lockheed Martin, Mikoyan","Mig-29, F/A-18, F-35","Lightning II, Super Hornet, Fulcrum",Fighter Jet
-PZL-Mielec,M-15,Belphegor,"Lopresti Piper, Consolodated PBY, Antonov","500B, None, AN-2","None, SwiftFury, Catalina",Crop Duster
-Cessna,750,Citation X,"Embraer, Gulfstream, Dassault","G-280, 900EX, None","Phenom 300, Falcon, Gulfstream 280",Private Jet
-Aero Spacelines,B-377SGT,Guppy 201,"Fairchild, Douglas, Shorts","SC.7, DC-6, C-82","Skyvan, Packet, None",Transport
-Airbus,A320,None,"Boeing, Tupolev, BAe","TU-154, 777-200, 787-8","Dreamliner, Intercontential, Careless",Transport
+PZL-Mielec,M-15,Belphegor,"Lopresti Piper, Consolodated PBY, Antonov","500B, No Model, AN-2","No Name, SwiftFury, Catalina",Crop Duster
+Cessna,750,Citation X,"Embraer, Gulfstream, Dassault","G-280, 900EX, No Model","Phenom 300, Falcon, Gulfstream 280",Private Jet
+Aero Spacelines,B-377SGT,Guppy 201,"Fairchild, Douglas, Shorts","SC.7, DC-6, C-82","Skyvan, Packet, No Name",Transport
+Airbus,A320,No Name,"Boeing, Tupolev, BAe","TU-154, 777-200, 787-8","Dreamliner, Intercontential, Careless",Transport
 Rockwell,B-1B,Lancer,"General Dynamics, Boeing, Northrop Grumman","B-47, B-2A, F-111A","Spirit, Stratojet, Nighthawk",Bomber
-Beechcraft,18,None,"Lockheed, Pilatus Britten-Norman, Grumman","BN-2A Mk. III, G-21, PV-2","Harpoon, Trislander, Goose",General Aviation
-Air Tractor,AT-602,None,"Grumman, Thrush Aircraft, Piper","PA-36, S2R-G10, G-164","Brave, Ag Cat, Turbo-Thrush",Crop Duster
-Cessna,C-172,Skyhawk,"Cirrus, Mooney, Beechcraft","C-182, SR-20, SR-22","Stationair, None, Skylane",General Aviation
+Beechcraft,18,No Name,"Lockheed, Pilatus Britten-Norman, Grumman","BN-2A Mk. III, G-21, PV-2","Harpoon, Trislander, Goose",General Aviation
+Air Tractor,AT-602,No Name,"Grumman, Thrush Aircraft, Piper","PA-36, S2R-G10, G-164","Brave, Ag Cat, Turbo-Thrush",Crop Duster
+Cessna,C-172,Skyhawk,"Cirrus, Mooney, Beechcraft","C-182, SR-20, SR-22","Stationair, No Name, Skylane",General Aviation
 McDonnell Douglas,F-4,Phantom II,"Grumman, Lockheed, Republic","F-105, F-14, F-101","Voodoo, Thunderchief, Tomcat",Fighter Jet
 Antonov,AN-22,Antheus,"Douglas, Chrysler, Lockheed","C-27A, C-130, C-133","Cargomaster, Spartan, Hercules",Transport
-Dassault-Dornier,None,Alpha Jet,"SIAI-Marchetti, Fouga, Bae/McDonnell Douglas","T-45C, S.211, CM-175","Zéphyr, Goshawk, None",Fighter Jet
-Dassault,900EX,Falcon,"Embraer, Cessna, Gulfstream Aerospace","750, None, 350","Citation X, Phenom 300, Gulfstream 280",Private Jet
-Fairchild,C-82,Packet,"Douglas, Shorts, Aero Spacelines","SC.7, DC-4E, B-377SGT","Skyvan, Guppy 201, None",Transport
-Boeing,777-200,None,"Airbus, Tupolev, Bae","Tu-154, 787-8, A318","Dreamliner, Intercontential, Careless",Transport
-Eurocopter,EC 130B4,None,"Bell, Agusta Westland, Sikorsky","S-76C, AW 139, 429","Global Ranger, Jet Ranger, Spirit",Civilian Helicopter
-Pilatus Britten-Norman,BN-2A Mk. III,Trislander,"Lockheed, Beechcraft, Grumman","G-21, PV-2, 18","Goose, Harpoon, None",Transport
-Saab,90,Scandia,"Convair, Martin, Grumman","G159, CV-440, 4-0-4","Metropolitan, None, Gulfstream I",Transport
-Cessna,C-182,Skylane,"Cirrus, Mooney, Beechcraft","C-172, SR-20, SR-22","Stationair, None, Skyhawk",General Aviation
+Dassault-Dornier,No Model,Alpha Jet,"SIAI-Marchetti, Fouga, Bae/McDonnell Douglas","T-45C, S.211, CM-175","Zéphyr, Goshawk, No Name",Fighter Jet
+Dassault,900EX,Falcon,"Embraer, Cessna, Gulfstream Aerospace","750, No Model, 350","Citation X, Phenom 300, Gulfstream 280",Private Jet
+Fairchild,C-82,Packet,"Douglas, Shorts, Aero Spacelines","SC.7, DC-4E, B-377SGT","Skyvan, Guppy 201, No Name",Transport
+Boeing,777-200,No Name,"Airbus, Tupolev, Bae","Tu-154, 787-8, A318","Dreamliner, Intercontential, Careless",Transport
+Eurocopter,EC 130B4,No Name,"Bell, Agusta Westland, Sikorsky","S-76C, AW 139, 429","Global Ranger, Jet Ranger, Spirit",Civilian Helicopter
+Pilatus Britten-Norman,BN-2A Mk. III,Trislander,"Lockheed, Beechcraft, Grumman","G-21, PV-2, 18","Goose, Harpoon, No Name",Transport
+Saab,90,Scandia,"Convair, Martin, Grumman","G159, CV-440, 4-0-4","Metropolitan, No Name, Gulfstream I",Transport
+Cessna,C-182,Skylane,"Cirrus, Mooney, Beechcraft","C-172, SR-20, SR-22","Stationair, No Name, Skyhawk",General Aviation
 Grumman,F-14,Tomcat,"Lockheed, McDonnell Douglas, Republic","F-105, F-4, F-101","Phantom II, Voodoo, Thunderchief",Fighter Jet
 Chrysler,C-27A,Spartan,"Antonov, Douglas, Lockheed","C-130, An-22, C-133","Cargomaster, Antheus, Hercules",Military Heavy
-Fouga,CM.175,Zéphyr,"SIAI-Marchetti, Dassault-Dornier, Bae/McDonnell Douglas","None, T-45C, S.211","Goshawk, None, Alpha Jet",Fighter Jet
+Fouga,CM.175,Zéphyr,"SIAI-Marchetti, Dassault-Dornier, Bae/McDonnell Douglas","No Model, T-45C, S.211","Goshawk, No Name, Alpha Jet",Fighter Jet
 Douglas,C-124,Globemaster II,"Shorts, Boeing, Conroy","CL-44-0, SC.5, C-97","Stratofreighter, Belfast, Guppy",Military Heavy
 Mikoyan-Gurevich,MiG-17,Fresco',"Dassault, North American, McDonnell","F-86, FH-1, MD.450","Ouragan, Phantom, Sabre",Fighter Jet
-Boeing,787-8,Dreamliner,"Airbus, Tupolev, BAe","Tu-154, 777-200, A330","Intercontential, None, Careless",Transport
-Bell,230,None,"Eurocopter/CATIC/STAe, McDonnell Douglas, Silvercraft","MD 600N, SH-4, EC 120 B","Jet Ranger, Long Ranger, Colibri",Civilian Helicopter
-Lockheed,PV-2,Harpoon,"Beechcraft, Pilatus Britten-Norman, Grumman","BN-2A Mk. III, G-21, 18","Goose, None, Trislander",General Aviation
-Beechcraft,2000A,Starship I,"Fuji, Piaggio, Rockwell","FA-300, 690A, P.180","Avanti, Turbo Commander, None",General Aviation
-North American,P-51D,Mustang,"Nakajima, Messerschmitt, Supermarine","Mk. V, Ki-43, BF 109","None, Spitfar, 'Oscar'",Warbird
-Aerospatiale,SA 341,Gazelle,"Mil, Sikorsky, Bell","47G, S-62, Mi-2","Alouette III, Hoplite, None",Military Helicopter
+Boeing,787-8,Dreamliner,"Airbus, Tupolev, BAe","Tu-154, 777-200, A330","Intercontential, No Name, Careless",Transport
+Bell,230,No Name,"Eurocopter/CATIC/STAe, McDonnell Douglas, Silvercraft","MD 600N, SH-4, EC 120 B","Jet Ranger, Long Ranger, Colibri",Civilian Helicopter
+Lockheed,PV-2,Harpoon,"Beechcraft, Pilatus Britten-Norman, Grumman","BN-2A Mk. III, G-21, 18","Goose, No Name, Trislander",General Aviation
+Beechcraft,2000A,Starship I,"Fuji, Piaggio, Rockwell","FA-300, 690A, P.180","Avanti, Turbo Commander, No Name",General Aviation
+North American,P-51D,Mustang,"Nakajima, Messerschmitt, Supermarine","Mk. V, Ki-43, BF 109","No Name, Spitfar, 'Oscar'",Warbird
+Aerospatiale,SA 341,Gazelle,"Mil, Sikorsky, Bell","47G, S-62, Mi-2","Alouette III, Hoplite, No Name",Military Helicopter
 Douglas,C-133,Cargomaster,"Antonov, Chrysler, Lockheed","C-27A, C-130, An-22","Antheus, Spartan, Hercules",Military Heavy
-SIAI-Marchetti,S.211,None,"Dassault-Dornier, Fouga, Bae/McDonnell Douglas","None, T-45C, CM.175","Zéphyr, Goshawk, Alpha Jet",Fighter Jet
-Airbus,A380-800,None,"McDonnell Douglas, Boeing, Antonov","An-124, 747-8i, MD-11","Cossack, Intercontential, Condor",Transport
+SIAI-Marchetti,S.211,No Name,"Dassault-Dornier, Fouga, Bae/McDonnell Douglas","No Model, T-45C, CM.175","Zéphyr, Goshawk, Alpha Jet",Fighter Jet
+Airbus,A380-800,No Name,"McDonnell Douglas, Boeing, Antonov","An-124, 747-8i, MD-11","Cossack, Intercontential, Condor",Transport
 Douglas,A-4,Skyhawk,"Dassault-Breguet, Fuji, de Havilland","DH.110, T-1, 2000C","Mirage, Hatsutaka, Sea Vixen",Fighter Jet
-Nanchang,CJ-6A,None,"Nord, Spartan, Yakolev","Yak-11, 7W, 1101","Executive, Noralpha, Moose",Warbird
-McDonnell Douglas,MD 600N,None,"Bell, Eurocopter/CATIC/STAe, Silvercraft","SH-4, 230, EC 120 B","Jet Ranger, Long Ranger, Colibri",Civilian Helicopter
+Nanchang,CJ-6A,No Name,"Nord, Spartan, Yakolev","Yak-11, 7W, 1101","Executive, Noralpha, Moose",Warbird
+McDonnell Douglas,MD 600N,No Name,"Bell, Eurocopter/CATIC/STAe, Silvercraft","SH-4, 230, EC 120 B","Jet Ranger, Long Ranger, Colibri",Civilian Helicopter
 Grumman,G-1159,Gulfstream II-TT,"IAI, Rockwell, Lockheed","75A, 1124, L-1329","Jetstar I, Westwind I, Sabreliner",Private Jet
-Rockwell,690A,Turbo Commander,"Fuji, Piaggio, Beechcraft","FA-300, P.180, 2000A","Starship I, Avanti, None",General Aviation
-Supermarine,Mk. V,Spitfire,"North American, Nakajima, Messerschmitt","Ki-43, P-51D, BF-109","None, Mustang, Oscar",Warbird
+Rockwell,690A,Turbo Commander,"Fuji, Piaggio, Beechcraft","FA-300, P.180, 2000A","Starship I, Avanti, No Name",General Aviation
+Supermarine,Mk. V,Spitfire,"North American, Nakajima, Messerschmitt","Ki-43, P-51D, BF-109","No Name, Mustang, Oscar",Warbird
 Cessna,C-180,Skywagon,"Fairchild, Quest Aircraft, De Havilland Canada","C-208B, DHC-3, Q-100","Kodiak, Grand Caravan, Otter",General Aviation
 Douglas,R4D-8,Super Skytrain,"Grumman, Martin, Consolidated","PBY-1, JRM, HU-16","Albatross, Catalina, Mars",Warbird
 Grumman,OV-1,Mohawk,"Fairchild, Bell-Boeing, Rockwell","MV-22, S-2, OV-10","Tracker, Bronco, Osprey",Utility
-Embraer,None,Phenom 300,"Cessna, Gulstream Aerospace, Dassault",,,Private Jet
+Embraer,No Model,Phenom 300,"Cessna, Gulstream Aerospace, Dassault",,,Private Jet
 De Havilland,DHC-3,Otter,"Cessna, Fairchild, Quest Aircraft","C-208B, Q-100, C-180","Kodiak, Skywagon, Grand Caravan",General Aviation
 IAI,1124,Westwind I,"Rockwell, Lockheed, Grumman","75A, G-1159, L-1329","Jetstar I, Gulfstream II-TT, Sabreliner",Private Jet
 Sikorsky,CH-53E,Super Stallion,"McDonnell Douglas, Boeing Helicopters, Bell","UH-1D, CH-47D, AH-6J","Chinook, Little Bird, Iroquois",Military Helicopter
 Douglas,AD-1,Skyraider,"Chance Vought, Grumman, Martin","F4U, AF-2, AM-1","Mauler, Guardian, Corsair",Warbird
-Luscombe,8A,Silvaire,"Cessna, Commonwealth, Piper","PA-11, 140, 120","None, Cub Special, Skyranger",General Aviation
-Bombardier,DHC-8-400,Q400,"Dornier, ATR, Canadair","ATR 72, Do 328, DHC-8-100","Q100, Troopship, None",Transport
+Luscombe,8A,Silvaire,"Cessna, Commonwealth, Piper","PA-11, 140, 120","No Name, Cub Special, Skyranger",General Aviation
+Bombardier,DHC-8-400,Q400,"Dornier, ATR, Canadair","ATR 72, Do 328, DHC-8-100","Q100, Troopship, No Name",Transport
 Grumman,HU-16,Albatross,"Douglas, Martin, Consolidated","PBY-1, JRM, R4D-8","Super Skytrain, Catalina, Mars",Seaplane
 Mil,Mii-12,Homer,"Boeing Helicopters, Erickson, Aerospatiale","SA 321, S-64E, 234","Aircrane, Chinook, Super Frelon",Military Helicopter
 Quest Aircraft,Q-100,Kodiak,"Cessna, Fairchild, De Havilland Canada","C-208B, DHC-3, C-180","Skywagon, Grand Caravan, Otter",General Aviation
 Antonov,An-32,Cline,"Tupolev, Mikoyan-Gurevich, Ilyushin","Tu-95, An-22, Tu-144","Cleat, Bear, Antei",Military Heavy
-Cessna,510,Citation Mustang,"Embraer, Gulfstream, Dassault","None, IV, 300","Citation IV, Galaxy, Phenom",Private Jet
-Lockheed,C-141,Starlifter,"Boeing, Lockheed, General Dynamics","C-17, C-5, C-32","Super Galaxy, Globemaster III, None",Military Heavy
+Cessna,510,Citation Mustang,"Embraer, Gulfstream, Dassault","No Model, IV, 300","Citation IV, Galaxy, Phenom",Private Jet
+Lockheed,C-141,Starlifter,"Boeing, Lockheed, General Dynamics","C-17, C-5, C-32","Super Galaxy, Globemaster III, No Name",Military Heavy
 Beechcraft,60,Duke,"Cessna, Piper, Cirrus","90, 65, 414","King Air, Queen Air, Chancellor",General Aviation
 Sud Aviation,Tp85,Caravelle,"Hawker Siddley, Handley Page, Boeing","RC-135W, K.2, MR.2","Nimrod, Rivet Joint, Victor",Transport
-Curtiss-Wright,C-46,Commando,"Douglas, McDonnell, Showa-Nakajima","L2, DC-3, C-47","Skymaster, Tabby, None",Military Heavy
+Curtiss-Wright,C-46,Commando,"Douglas, McDonnell, Showa-Nakajima","L2, DC-3, C-47","Skymaster, Tabby, No Name",Military Heavy
 Folland,Fo.144,Gnat,"Aero, CASA, Northrop","L-39, T-38, C-101","Albatross, Aviojet, Talon",Fighter Jet
-Convair,B-58,Hustler,"General Dynamics, English Electric, Lockheed Martin","F-111, None, F-102, F-106","Ardvark, Delta Dart, Delta Dagger, Lightning",Fighter Jet
-Mil,Mi-10,Harke,"Airbus Helicopters, Bell, Sikorsky","S-64, Mi-26, 412","Halo, None, Skycrane",Military Helicopter
-Wing,D-1,Derringer,"Cessna, Beechcraft, Camair","None, 310, 50","Twin Bonanza, None, Twin Navion",General Aviation
-IAI,None,Lavi,"General Dynamics, Northrop, McDonnell Douglas","YF-16, YF-17, F-16","Fighting Falcon, Falcon, None",Fighter Jet
+Convair,B-58,Hustler,"General Dynamics, English Electric, Lockheed Martin","F-111, No Model, F-102, F-106","Ardvark, Delta Dart, Delta Dagger, Lightning",Fighter Jet
+Mil,Mi-10,Harke,"Airbus Helicopters, Bell, Sikorsky","S-64, Mi-26, 412","Halo, No Name, Skycrane",Military Helicopter
+Wing,D-1,Derringer,"Cessna, Beechcraft, Camair","No Model, 310, 50","Twin Bonanza, No Name, Twin Navion",General Aviation
+IAI,No Model,Lavi,"General Dynamics, Northrop, McDonnell Douglas","YF-16, YF-17, F-16","Fighting Falcon, Falcon, No Name",Fighter Jet
+Beechcraft,76,Duchess,"Cessna, Grumman, Piper","310, PA-44, GA-7","Seminole, Cougar, No Name",General Aviation
+Embraer,ERJ-145,No Name,"Canadair, Fokker, Douglas","70, CRJ-200, DC-9","Friendship, Super 80, Fellowship",Transport
+McDonnell Douglas,F-101,Voodoo,"Convair, Grumman, Lockheed","F-106, F-104, F-102","Delta Dagger, Starfighter, Delta Dart",Fighter Jet
+Daher-Socata,TBM-900,No Name,"Pilatus, Piper, Epic Aircraft","PA-46TP, PC-12, E-1000","Malibu Meridian, Ibis, Kestrel",General Aviation
+Taylorcraft,BC-12D,No Name,"Aeronca, Luscombe, Cessna","8A, 140, 11AC","Pacer, Chief, Silvaire",General Aviation
+Globe,GC-1,Swift,"Bucker, ERCO, eyers","BU-181, MAC-145, 415","Ercoupe, Bestmannm No Name",General Aviation
+Curtiss,P-36,Hawk,"Messerschmitt, Hawker, Mitsubishi","BC-109, Mk.Iic, A6M","Zeke, Hurricane, No Name",Warbird
+Bombardier-Learjet,75,No Name,"Pilatus, Embraer, Cessna","680A, PC-14, EMB-505","Phenom 300, Challenger, Citation Latitude",Private Jet
+Bell,47H-1,No Name,"Hiller, Brandtley, Sikorsky","B2, UH-12, S-52","Skyhook, Hoverfly, Raven",Civilian Helicopter
+Sukhoi,Su-35,Flanker E,"Xian, Chendu, Mikoyan","Mig-29, J-10, JH-7","Flounder, Firebird, Fulcrum",Fighter Jet
+Boeing,C-75,Stratoliner,"De Havilland, Curtiss, Douglas","C-33, DH-91, C-46","Albatross, Commando, No Name",Transport
+Dornier,Do-24,No Name,"Sikorsky, Martin, Consolidated","P5M, S-43, PBY-5A","Marlin, Catalina, Seaford",Seaplane
+Airbus Helicopters,H-175,No Name,"TAI, Agusta, Bell","525, T-625, AW-169","Relentless, Gokbey, Global Ranger",Civilian Helicopter
+Grumman,GA-7,Cougar,"Beechcraft, Cessna, Piper","310, PA-44, 76","Duchess, Seminole, No Name",General Aviation
+Canadair,CRJ-200,No Name,"Fokker, Douglas, Embraer","70, ERJ-145, DC-9","Friendship, Super 80, Fellowship",Transport
+Convair,F-106,Delta Dart,"McDonnell, Grumman, Lockheed","F-101, F-104, F-102","Delta Dagger, Starfighter, Voodoo",Fighter Jet
+Epic Aircraft,E-1000,No Name,"Pilatus, Daher-Socata, Piper","PA-46TP, PC-12, TBM-900","Malibu Meridian, Ibis, Kestral",General Aviation
+Luscombe,8A,Silvaire,"Aeronca, Taylorcraft, Cessna","140, BC-12D, 11AC","Pacer, Chief, No Name",General Aviation
+Meyers,MAC-145,No Name,"Bucker, Globe, ERCO","GC-1, BU-181, 415","Ercoupe, Swift, Bestmann",General Aviation
+Hawker,Mk.Iic,Hurricane,"Messerschmitt, Curtiss, Mitsubishi","BF-109, A6M, P-36","Zeke, Hawk, No Name",Warbird
+Embraer,EMB-505,Phenom 300,"Pilatus, Bombardier Learjet, Cessna","680A, PC-24, 75","Challenger, Citation Latitude, No Name",Private Jet
+Brantley,B2,No Name,"Hiller, Bell, Sikorsky","UH-12, S-52, 47H-1","Skyhook, Hoverfly, Raven",Civilian Helicopter
+Xian,JH-7,Flounder,"Sukhoi, Chengdu, Mikoyan","Mig-29, J-10, Su-35","Flanker E, Firebird, Fulcrum",Fighter Jet
+Douglas,C-33,No Name,"DeHavilland, Curtiss, Boeing","DH-91, C-75, C-46","Stratoliner, Albatross, Commando",Military Heavy
+Consolidated,PBY-5A,Catalina,"Sikorsky, Dornier, Martin","P5M, S-43, Do-24","Marlin, Seaford, No Name",Seaplane
+Atlas,E,Cheetah,"Dassault, HAL, IAI","3, C.2, 5","Kfir, Mirage, No Name",Fighter Jet
+Cessna,310,No Name,"Beechcraft, Grumman, Piper","PA-44, 76, GA-7","Duchess, Seminole, Cougar",General Aviation
+Fokker,70,No Name,"Canadair, Douglas, Embraer","CRJ-200, ERJ-145, DC-9","Friendship, Super 80, Fellowship",Transport
+Lockheed,F-104,Starfighter,"McDonnell, Convair, Grumman","F-106, F-101, F-102","Delta Dagger, Delta Dart, Voodoo",Fighter Jet
+Piper,PA-46TP,Malibu Meridian,"Pilatus, Daher-Socata, Epic Aircraft","PC-12, E-1000, TBM-900","Ibis, Kestrel, No Name",General Aviation
+Aeronca,11AC,Chief,"Luscombe, Taylorcraft, Cessna","140, BC-12D, 8A","Pacer, Silvaire, No Name",General Aviation
+ERCO,415,Ercoupe,"Bucker, Globe, Meyers","GC-1, BU-181, MAC-145","Swift, Bestmann, No Name",General Aviation
+Mitsubishi,A6M,Zeke,"Messerschmitt, Curtiss, Hawker","BF-109, Mk.Iic, P-36","Hawk, Hurricane, No Name",Warbird
+Pilatus,PC-24,No Name,"Embraer, Bombardier, Learjet, Cessna","680A, EMB -505, 75","Phenom 300, Challenger, Citation Latitude",Private Jet
+Hiller,UH-12,Raven,"Brantley, Bell, Sikorsky","B2, S-52, 47H-1","Skyhook, Hoverfly, No Name",Military Helicopter
+Chendu,J-10,Firebird,"Sukhoi, Xian, Mikoyan","Mig-29, Su-35, JH-7","Flounder, Flanker E, Fulcrum",Fighter Jet
+DeHavilland,DH-91,Albatross,"Curtiss, Boeing, Douglas","C-33, C-75, C-46","Stratoliner, Commando, No Name",Military Heavy
+Sikorsky,S-43,No Name,"Dornier, Martin, Consolidated","P5M, Do-24, PBY-5A","Marlin, Catalina, Seaford",Seaplane
+Piper,PA-44,Seminole,"Beechcraft, Cessna, Grumman","3310, 76, GA-7","Duchess, Cougar, No Name",General Aviation
+Douglas,DC-9,No Name,"Canadair, Fokker, Embraer","70, CRJ-200, ERJ-145","Friendship, Super 80, Fellowship",Transport
+Convair,F-102,Delta Dagger,"McDonnell, Grumman, Lockheed","F-106, F-101, F-104","Starfighter, Delta Dart, Voodoo",Fighter Jet
+Pilatus,PC-12,No Name,"Daher-Socata, Piper, Epic Aircraft","PA-46TP, E-1000, TBM-900","Malibu Meridian, Ibis, Kestrel",General Aviation
+Cessna,140,No Name,"Aeronca, Luscombe, Taylorcraft","8A, BC-12D, 11AC","Pacer, Chief, Silvaire",General Aviation
+Bucker,BU-181,Bestmann,"Globe, ERCO, eyers","GC-1, MAC-145, 415","Ercoupe, Swift, No Name",Warbird
+Messerschmitt,BC-109,No Name,"Curtiss, Hawker, Mitsubishi","Mk.Iic, A6M, P-36","Zeke, Hawk, Hurricane",Warbird
+Cessna,680A,Citation Latitude,"Pilatus, Embraer, Bombardier Learjet","PC-24, EMB-505, 75","Phenom 300, Challenger, No Name",Private Jet
+Sikorsky,S-52,No Name,"Hiller, Brantley, Bell","B2, UH-12, 47H-1","Skyhook, Hoverfly, Raven",Military Helicopter
+Mikoyan,Mig-29,Fulcrum,"Sukhoi, Xian, Chengdu","J-10, Su-35, JH-7","Flounder, Flanker E, Firebird",Fighter Jet
+Curtiss,C-46,Commando,"DeHavilland, Boeing, Douglas","C-33, DH-91, C-75","Stratoliner, Albatross, No Name",Military Heavy
+Martin,P5M,Marlin,"Sikorsky, Dornier, Consolidated","S-43, Do-24, PBY-5A","Catalina, Seaford, No Name",Seaplane
+Grumman,F-14A,Tomcat,"Mikoyan-Gurevich, McDonnell Douglas, Boeing","F/A-18, Mig-23, F-15","Eagle, No Name, Super Hornet",Fighter Jet
+Dassault,100,Mercure,"Airbus, Boeing, Embraer","A-300, A-310, 767","No Name, Airline, Camber",Transport
+Airbus,A-310,No Name,"Dassault, Boeing, Embraer","100, A-300, 767","No Name, Airline, Camber",Transport
+Airbus,CC-295,Kingfisher,"Alenia, Ilyushin, Antonov","AN-32, Il-112, C-27J","Spartan, No Name, Transport",Military Heavy
+Douglas,AC-47D,Spooky,"Lisunov, Douglas, Boeing","Li-2, DC-3, 247","No Name, Tabby, Cab",Transport
+Ilyushin,IL-28,Beagle,"North American, English Electric, Ilyushin","B-45, No Model, Il-22","No Name, Torando, Canberra",Bomber
+Chengdu,J-20,Mighty Dragon,"Lockheed Martin, McDonnell-Douglas, Atlas","No Model, F-35, F-22","Raptor, Lightning II, Cheetah",Fighter Jet
+Sukhoi,100,Superjet,"Embraer, Fokker, Antonov","AN-148, 190, No Model","Friendship, No Name, Amazon",Transport
+PZL-WSK,106,Kurk,"Cessna, Air Tractor, Piper","PA-25, 188, AT-802","Pawnee, Agwagon, No Name",Crop Duster
+Emigh,A-2,Trojan,"Aerotec, Beechcraft, ERCO","77, 415C, A-122","Skipper, Uirapuru, Ercoupe",General Aviation
