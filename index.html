@@ -1,0 +1,51 @@
+<html>
+	<head>
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/png" href="static/favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NIFA Aircraft Rec</title>
+        <link rel="stylesheet" href="static/style.css">
+	</head>
+
+ <!-- Button to open the modal login form -->
+<button onclick="document.getElementById('id01').style.display='flex'">Login</button>
+
+<!-- The Modal -->
+<div id="id01" class="modal">
+
+  <!-- Modal Content -->
+  <form class="modal-content animate" action="/static" method="post">
+    <div class="container">
+
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        <br>
+      <div class="centered">
+        <button onclick="document.getElementById('id01').style.display='flex'">Login</button>
+        </div>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it with fade out effect
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.classList.add('fade-out');
+    setTimeout(function() {
+      modal.style.display = "none";
+      modal.classList.remove('fade-out');
+    }, 500); // Match the transition duration
+  }
+}
+</script>
+
+    <!-- Throw error if not already session token present, and try to hit home button -->
+			{% if error %}
+				<p class=error>{{ error }}
+			{% endif %}
+		</div>
+	</body>
+</html>
