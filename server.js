@@ -30,7 +30,8 @@ app.get('/', function (req, res) {
 });
 
 app.get('/login', function (req, res) {
-
+    req.session.loggedIn = false;
+    res.redirect('/');
 });
 
 app.post('/login', async (req, res) => {
@@ -56,6 +57,50 @@ app.get('/menu', function (req, res) {
     if(req.session.loggedIn) {
 
         res.sendFile(path.resolve(__dirname, 'Quiz', 'PrimaryPage.html'));
+    } else {
+        // TODO: Add a popup with the message "You are not logged in"
+        res.redirect('/');
+    }
+
+});
+
+app.get('/testPre', function (req, res) {
+    if(req.session.loggedIn) {
+
+        res.sendFile(path.resolve(__dirname, 'Quiz', 'TestPre.html'));
+    } else {
+        // TODO: Add a popup with the message "You are not logged in"
+        res.redirect('/');
+    }
+
+});
+
+app.get('/test', function (req, res) {
+    if(req.session.loggedIn) {
+
+        res.sendFile(path.resolve(__dirname, 'Quiz', 'Test.html'));
+    } else {
+        // TODO: Add a popup with the message "You are not logged in"
+        res.redirect('/');
+    }
+
+});
+
+app.get('/practice', function (req, res) {
+    if(req.session.loggedIn) {
+
+        res.sendFile(path.resolve(__dirname, 'Quiz', 'Practice.html'));
+    } else {
+        // TODO: Add a popup with the message "You are not logged in"
+        res.redirect('/');
+    }
+
+});
+
+app.get('/learn', function (req, res) {
+    if(req.session.loggedIn) {
+
+        res.sendFile(path.resolve(__dirname, 'Quiz', 'Learn.html'));
     } else {
         // TODO: Add a popup with the message "You are not logged in"
         res.redirect('/');

@@ -39,7 +39,7 @@
             <button id="submit"><p>Submit</p></button>
             <p id="skip">Next Question</p></div>
         </div>
-        <a href="Primary page.html" class="leave">
+        <a href="/menu" class="leave">
             <p>Go back</p>
         </a>
     </main>
@@ -168,7 +168,7 @@
 
                     // Display the image
                     const aircraftImage = document.getElementById('disappearingImg');
-                    aircraftImage.src = `../img/Aircraft/${questionData.correctAircraft.imgSrc}.png`;
+                    aircraftImage.src = `/img/Aircraft/${questionData.correctAircraft.id-1}.png`;
 
                     // Combine wrong and correct answers, then shuffle for manufacturer
                     let manufacturerAnswers = shuffleArray([...questionData.wrongAnswers, questionData.correctAircraft]);
