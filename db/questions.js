@@ -56,7 +56,13 @@ async function getSequentialQuestion() {
     };
 }
 
+async function getUniqueTags() {
+    const tags = await knex('Aircraft').distinct('tag').whereNotNull('tag').pluck('tag');
+    return tags;
+}
+
 module.exports = {
     getRandomQuestion,
     getSequentialQuestion,
+    getUniqueTags,
 };

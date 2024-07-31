@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIFA Aircraft Rec</title>
+    <link rel="stylesheet" href="../cleancss.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../CSS/primpage.css">
+</head>
+<body>
+    <main>
+        <h1>What would you like to do today?</h1>
+        <select id="tagSelect">
+            <option value="Select a Tag" selected>Select a Tag</option>
+        </select>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                fetch('/getTags')
+                    .then(response => response.json())
+                    .then(tags => {
+                        const select = document.getElementById('tagSelect');
+                        tags.forEach(tag => {
+                            const option = document.createElement('option');
+                            option.value = tag;
+                            option.textContent = tag;
+                            select.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching tags:', error));
+            });
+        </script>
+
+        <div class="trisplit">
+            <a href="Learn.html" class="activity">
+                <img src="../img/Activities/portrait.jpg" alt="Alt text">
+                <h2>Learn</h2>
+            </class=>
+            </a>
+            <a href="Practice.html" class="activity">
+                <img src="../img/Activities/portrait.jpg" alt="Alt text">
+                <h2>Practice</h2>
+            </class=>
+            </a>
+            <a href="TestPre.html" class="activity">
+                <img src="../img/Activities/portrait.jpg" alt="Alt text">
+                <h2>Test</h2>
+                <p id="highscore">High score: </p>
+            </class=>
+            </a>
+        </div>
+    </main>
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function getCookie(name) {
+                let nameEQ = name + "=";
+                let ca = document.cookie.split(';');
+                for(let i=0;i < ca.length;i++) {
+                    let c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                }
+                return null;
+            }
+        
+            let highScore = getCookie('highScore') || 'No high score yet';
+        
+            let highScoreElement = document.getElementById('highscore');
+            highScoreElement.textContent += highScore;
+        });
+    </script>
+</body>
+</html>

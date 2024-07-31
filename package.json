@@ -1,7 +1,13 @@
 {
   "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
     "knex": "^3.1.0",
+    "node-popup": "^0.1.14",
+    "path": "^0.12.7",
+    "read": "^3.0.1",
     "sqlite3": "^5.1.7"
   },
   "scripts": {
@@ -11,7 +17,6 @@
   "version": "1.0.0",
   "description": "A website for the Flying Sooners NIFA team to practice stuff",
   "main": "script.js",
-  "devDependencies": {},
   "author": "@likeusb / @wrmf",
   "license": "ISC"
 }
