@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NIFA Aircraft Rec</title>
     <link rel="stylesheet" href="../cleancss.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../public/style.css">
     <link rel="stylesheet" href="../CSS/learn.css">
 </head>
 <body>
@@ -18,32 +18,38 @@
             <div class="left" id="prev"><p>Previous</p></div>
             <div class="right" id="next"><p>Next</p></div>
         </div>
-        <a href="/menu" class="leave">
+        <a href="PrimaryPage.html" class="leave">
             <p>Go back</p>
         </a>
     </main>
-    <script src="../script.js"></script>
+    <script src="../public/script.js"></script>
     <script>
-        async function fetchAndDisplayQuestion() {
-            try {
-                const response = await fetch('http://127.0.0.1:1337/sequential-question');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                if (!response.headers.get('content-type')?.includes('application/json')) {
-                    throw new Error('Received non-JSON response from server');
-                }
-                const questionData = await response.json();
-                const aircraftImage = document.querySelector('img');
-                aircraftImage.src = `../img/Aircraft/${questionData.correctAircraft.id-1}.png`;
-                aircraftImage.alt = `Image ${questionData.correctAircraft.model}`;
-                document.getElementById('Manufacturer').innerHTML = `${questionData.correctAircraft.manufacturer} ${questionData.correctAircraft.model} ${questionData.correctAircraft.altname}`;
-            } catch (error) {
-                console.error('Error fetching question data:', error);
-            }
-        }
+        // async function fetchAndDisplayQuestion() {
+        //     try {
+        //         const response = await fetch('http://127.0.0.1:1337/all-questions');
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         if (!response.headers.get('content-type')?.includes('application/json')) {
+        //             throw new Error('Received non-JSON response from server');
+        //         }
+        //         const questionData = await response.json();
+        //         const aircraftImage = document.querySelector('img');
+        //         aircraftImage.src = `../img/Aircraft/${questionData.correctAircraft.imgSrc-1}.png`;
+        //         console.log(`${questionData.correctAircraft.imgSrc}`)
+        //         aircraftImage.alt = `Image ${questionData.correctAircraft.model}`;
+        //         document.getElementById('Manufacturer').innerHTML = `${questionData.correctAircraft.manufacturer} ${questionData.correctAircraft.model} ${questionData.correctAircraft.altname}`;
+        //     } catch (error) {
+        //         console.error('Error fetching question data:', error);
+        //     }
+        // }
 
-        fetchAndDisplayQuestion();
+        // fetchAndDisplayQuestion();
+        fetch('http://localhost:1337/all-questions')
+            .then((response) = response.json())
+            .then((data) => {
+                console.log(data);
+            })
     </script>
 </body>
 </html>

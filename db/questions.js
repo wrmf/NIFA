@@ -9,7 +9,7 @@ async function getRandomQuestion() {
 
     const question = {
         correctAircraft: {
-            imgSrc: randomAircraft["img src"],
+            imgSrc: randomAircraft.id,
             manufacturer: randomAircraft.manufacturer,
             model: randomAircraft.model,
             altname: randomAircraft.altname,
@@ -48,13 +48,33 @@ async function getSequentialQuestion() {
 
     return {
         correctAircraft: {
-            imgSrc: aircraft["img src"],
+            imgSrc: aircraft.id,
             manufacturer: aircraft.manufacturer,
             model: aircraft.model,
             altname: aircraft.altname,
         }
     };
 }
+
+async function getAllQuestions() {
+    // const allAircraft = await knex('Aircraft').select('*').orderBy('id');
+
+    // let Aircraft = {};
+
+    // for (var i = 0; i < allAircraft.length; i++) {
+    //     Aircraft = allAircraft[i]
+    // }
+
+    // return {
+    //     correctAircraft: {
+    //         imgSrc: Aircraft.id,
+    //         manufacturer: Aircraft.manufacturer,
+    //         model: Aircraft.model,
+    //         altname: Aircraft.altname,
+    //     },
+    // };
+    return knex('Aircraft').select('*');
+};
 
 async function getUniqueTags() {
     const tags = await knex('Aircraft').distinct('tag').whereNotNull('tag').pluck('tag');
@@ -64,5 +84,6 @@ async function getUniqueTags() {
 module.exports = {
     getRandomQuestion,
     getSequentialQuestion,
-    getUniqueTags,
+    getAllQuestions,
+    getUniqueTags
 };

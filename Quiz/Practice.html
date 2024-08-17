@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NIFA Aircraft Rec</title>
     <link rel="stylesheet" href="../cleancss.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../public/style.css">
     <link rel="stylesheet" href="../CSS/practice.css">
 </head>
 <body>
@@ -48,7 +48,7 @@
             <p>Go back</p>
         </a>
     </main>
-    <script src="../script.js"></script>
+    <script src="../public/script.js"></script>
     <script>
                 // Assuming there's already a mechanism to determine if an answer is correct
     // Initialize score and question number
@@ -97,92 +97,79 @@
     }
 
 function handleSubmit() {
-    const selectedAnswers = document.querySelectorAll('.questions ul li p.selected'); // Only consider selected answers
-    let correctSelectedCount = 0; // Count of correctly selected answers
-    const totalCorrectAnswers = document.querySelectorAll('.questions ul li p[data-is-correct="true"]').length; // Total correct answers
+    const selectedAnswers = document.querySelectorAll('.questions ul li p.selected');
+    let correctSelectedCount = 0;
+    const totalCorrectAnswers = document.querySelectorAll('.questions ul li p[data-is-correct="true"]').length;
 
     selectedAnswers.forEach(answer => {
-        answer.classList.remove('selected'); // Remove 'selected' class
+        answer.classList.remove('selected');
         if (answer.getAttribute('data-is-correct') === 'true') {
-            answer.classList.add('correct'); // Correct answer
-            correctSelectedCount++; // Increment count for correct selected answer
+            answer.classList.add('correct');
+            correctSelectedCount++;
         } else {
-            answer.classList.add('wrong'); // Incorrect answer
+            answer.classList.add('wrong');
         }
     });
 
-    // Check if all selected answers are correct and match the total number of correct answers
     if (correctSelectedCount === selectedAnswers.length && correctSelectedCount === totalCorrectAnswers) {
-        correctAnswer(); // Increment score only if all selected answers are correct
+        correctAnswer();
     }
 
-    // Optionally, highlight the correct answer if not selected
     document.querySelectorAll('.questions ul li p').forEach(answer => {
         if (answer.getAttribute('data-is-correct') === 'true') {
-            answer.classList.add('correct'); // Ensure the correct answer is always highlighted
+            answer.classList.add('correct');
         }
     });
 
-    newQuestionFetched(); // Increment question number for the next question
+    newQuestionFetched();
 }
 
-    // Add event listener to the submit button
     document.getElementById('submit').addEventListener('click', handleSubmit);
 
-    // Function to reset classes for the next question
     function resetAnswerClasses() {
         const answers = document.querySelectorAll('.questions ul li p');
         answers.forEach(answer => {
-            answer.classList.remove('selected', 'correct', 'wrong'); // Remove all related classes
+            answer.classList.remove('selected', 'correct', 'wrong');
         });
     }
 
-    // Add event listeners to answers for selection
     document.querySelectorAll('.questions ul').forEach(ul => {
         ul.addEventListener('click', handleAnswerSelection);
     });
 
-    // Add event listener to the submit button
     document.getElementById('submit').addEventListener('click', handleSubmit);
 
-    // Modify the existing skip button event listener to also reset classes
-    document.getElementById('skip').removeEventListener('click', fetchAndDisplayQuestion); // Remove the existing event listener
+    document.getElementById('skip').removeEventListener('click', fetchAndDisplayQuestion);
     document.getElementById('skip').addEventListener('click', () => {
         resetAnswerClasses();
-        fetchAndDisplayQuestion(); // Call the original function to fetch and display the next question
+        fetchAndDisplayQuestion();
     });
-        // Function to shuffle an array (Fisher-Yates shuffle)
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+                [array[i], array[j]] = [array[j], array[i]];
             }
             return array;
         }
         
-        // Function to fetch and display a new aircraft question
     function fetchAndDisplayQuestion() {
-        fetch('http://127.0.0.1:1337/random-question') // Adjust the fetch URL as necessary
+        fetch('http://127.0.0.1:1337/random-question')
             .then(response => response.json())
             .then(questionData => {
-                // Update the aircraft image
                 const aircraftImage = document.querySelector('main img');
-                aircraftImage.src = `../img/Aircraft/${questionData.correctAircraft.id-1}.png`;
+                aircraftImage.src = `../img/Aircraft/${questionData.correctAircraft.imgSrc-1}.png`;
                 aircraftImage.alt = `A photo of ${questionData.correctAircraft.model}`;
 
-                // Shuffle and display manufacturer answers
                 let manufacturerAnswers = shuffleArray([...questionData.wrongAnswers, questionData.correctAircraft]);
                 document.querySelectorAll('.questions ul')[0].innerHTML = manufacturerAnswers.map(answer =>
                     `<li><p data-is-correct="${answer.manufacturer === questionData.correctAircraft.manufacturer}">${answer.manufacturer}</p></li>`
                 ).join('');
 
-                // Shuffle and display model answers
                 let modelAnswers = shuffleArray([...questionData.wrongAnswers, questionData.correctAircraft]);
                 document.querySelectorAll('.questions ul')[1].innerHTML = modelAnswers.map(answer =>
                     `<li><p data-is-correct="${answer.model === questionData.correctAircraft.model}">${answer.model}</p></li>`
                 ).join('');
 
-                // Shuffle and display common name answers
                 let commonNameAnswers = shuffleArray([...questionData.wrongAnswers, questionData.correctAircraft]);
                 document.querySelectorAll('.questions ul')[2].innerHTML = commonNameAnswers.map(answer =>
                     `<li><p data-is-correct="${answer.altname === questionData.correctAircraft.altname}">${answer.altname}</p></li>`
@@ -191,10 +178,8 @@ function handleSubmit() {
             .catch(error => console.error('Error fetching question data:', error));
     }
         
-        // Event listener for the "Skip" button
         document.getElementById('skip').addEventListener('click', fetchAndDisplayQuestion);
         
-        // Initial call to load the first question
         fetchAndDisplayQuestion();
     </script>
 </body>

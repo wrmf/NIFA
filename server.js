@@ -108,8 +108,6 @@ app.get('/learn', function (req, res) {
 
 });
 
-app.get('/')
-
 app.get("/random-question", async (req, res) => {
     try {
         const question = await db.getRandomQuestion();
@@ -128,6 +126,11 @@ app.get("/sequential-question", async (req, res) => {
         console.error(error);
         res.status(500).send('Error fetching a sequential question');
     }
+});
+
+app.get("/all-questions", async (req, res) => {
+    const allAircraft = await db.getAllQuestions();
+    res.status(200).json({ allAircraft });
 });
 
 app.get('/getTags', async (req, res) => {
