@@ -18,14 +18,30 @@ setTimeout(() => {
     dataHub(productList);
 }, 50);
 
-function dataHub(data) {
-    const seqData = sequential(data);
-    insertData(seqData)
-};
-
 const regExL = new RegExp(/learn/g);
 const regExP = new RegExp(/practice/g);
 const regExT = new RegExp(/test/g);
+
+function dataHub(data) {
+    const Data = sequential(data);
+    
+    // No, the console log does not need to be here. However, for some reason, if I remove this holy console.log, the entire thing breaks. I am also aware it floods console, I noticed that during testing. Unfortunately, moving it anywhere apart from in this one function results in everything falling apart.
+    console.log(regExL.test(window.location.href.toLowerCase()), "I'm sorry, random user who checked the console. This doesn't need to be here, or at least it wouldn't, but if I remove it, everything breaks. All three of these console logs are holy and I shalln't touch them.");
+    console.log(regExT.test(window.location.href.toLowerCase()));
+    console.log(regExP.test(window.location.href.toLowerCase()));
+
+    if (regExL.test(window.location.href.toLowerCase()) == true) {
+        insertData(Data)
+    };
+
+    if (regExP.test(window.location.href.toLowerCase()) == true) {
+        insertData(Data)
+    };
+
+    if (regExT.test(window.location.href.toLowerCase()) == true) {
+        insertData(Data)
+    };
+};
 
 let seq = '1'
 
@@ -71,7 +87,7 @@ function getCookie(name) {
     if (parts.length == 2) return parts.pop().split(";").shift();
 };
 
-// Yes. This is inefficient. Yes. I could move line 76 and 75 around. However, if I do that, for no reason other than JavaScript being JavaScript, the code will be terribly slow. 
+// Yes. This is inefficient. Yes. I could move line 91 and 92 around. However, if I do that, for no reason other than JavaScript being JavaScript, the code will be terribly slow. 
 if (regExL.test(window.location.href.toLowerCase()) == true) {
     function insertData(data) {
         var cont = document.querySelector('main');
@@ -502,6 +518,7 @@ if (regExT.test(window.location.href.toLowerCase()) == true) {
 
             if (correctRegex.test(subMan) == true && correctRegex.test(subMod) == true && correctRegex.test(subAlt) == true) {
                 s++;
+                setCookie('highscore', s)
             }
         });
 

@@ -14,24 +14,6 @@
         <select id="tagSelect">
             <option value="Select a Tag" selected>Select a Tag</option>
         </select>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                fetch('/getTags')
-                    .then(response => response.json())
-                    .then(tags => {
-                        const select = document.getElementById('tagSelect');
-                        tags.forEach(tag => {
-                            const option = document.createElement('option');
-                            option.value = tag;
-                            option.textContent = tag;
-                            select.appendChild(option);
-                        });
-                    })
-                    .catch(error => console.error('Error fetching tags:', error));
-            });
-        </script>
-
         <div class="trisplit">
             <a href="learn.html" class="activity">
                 <img src="../img/Activities/portrait.jpg" alt="Alt text">
@@ -51,6 +33,19 @@
             </a>
         </div>
     </main>
-    <script src="../public/script.js"></script>
+    <script src="primPage">
+        function getCookie(name) {
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+        };
+
+        document.getElementById('highscore').textContent = `High score: ${getCookie('highscore')}`;
+
+        if (getCookie('highscore') == undefined) {
+            document.getElementById('highscore').style.display = 'none';
+            document.getElementById('highscore').style.visibility = 'hidden';
+        };
+    </script>
 </body>
 </html>
