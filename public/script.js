@@ -155,10 +155,10 @@ if (regExP.test(window.location.href.toLowerCase()) == true) {
                 </ul>
                 <h2>What is the common name?</h2>
                 <ul>
-                    <li><p class="altnameP">${shuffledModel[0]}</p></li>
-                    <li><p class="altnameP">${shuffledModel[1]}</p></li>
-                    <li><p class="altnameP">${shuffledModel[2]}</p></li>
-                    <li><p class="altnameP">${shuffledModel[3]}</p></li>
+                    <li><p class="altnameP">${shuffledAltName[0]}</p></li>
+                    <li><p class="altnameP">${shuffledAltName[1]}</p></li>
+                    <li><p class="altnameP">${shuffledAltName[2]}</p></li>
+                    <li><p class="altnameP">${shuffledAltName[3]}</p></li>
                 </ul>
                 <div class="buttons">
                     <button id="submit"><p>Submit</p></button>
@@ -170,7 +170,7 @@ if (regExP.test(window.location.href.toLowerCase()) == true) {
             </a>
         `)
 
-        const correctRegex = new RegExp(/${data[1]}, /g);
+        const correctRegex = new RegExp(`${data[1]}|${data[2]}|${data[3]}`);
 
         var submit = document.getElementById('submit');
         var nextQ = document.getElementById('skip');
@@ -192,7 +192,7 @@ if (regExP.test(window.location.href.toLowerCase()) == true) {
                     element.classList.remove('selected');
                 });
                 element.classList.add('selected');
-                selected[0] = element.textContent;
+                selected[0] = element;
             });
         });
 
@@ -202,7 +202,7 @@ if (regExP.test(window.location.href.toLowerCase()) == true) {
                     element.classList.remove('selected');
                 });
                 element.classList.add('selected');
-                selected[1] = element.textContent;
+                selected[1] = element;
             });
         });
 
@@ -212,12 +212,76 @@ if (regExP.test(window.location.href.toLowerCase()) == true) {
                     element.classList.remove('selected');
                 });
                 element.classList.add('selected');
-                selected[2] = element.textContent;
+                selected[2] = element;
             });
         });
 
         submit.addEventListener('click', function() {
-            console.log(selected.toString())
+            console.log(selected)
+
+            if (selected[0] == undefined) {
+                selected[0] = 'none';
+            };
+
+            if (selected[1] == undefined) {
+                selected[1] = 'none';
+            };
+
+            if (selected[2] == undefined) {
+                selected[2] = 'none';
+            };
+
+            var subMan = selected[0].textContent;
+            var subMod = selected[1].textContent;
+            var subAlt = selected[2].textContent;
+
+            if (correctRegex.test(subMan) == true) {
+                console.log('Manufacturer is correct');
+                selected[0].classList.remove('selected');
+                selected[0].classList.add('correct');
+            } else {
+                console.log('Manufacturer is incorrect');
+                selected[0].classList.remove('selected');
+                selected[0].classList.add('wrong');
+
+                manufacturerP.forEach((element) => {
+                    if (correctRegex.test(element.textContent) == true) {
+                        element.classList.add('correct');
+                    }
+                });
+            }
+
+            if (correctRegex.test(subMod) == true) {
+                console.log('Model is correct');
+                selected[1].classList.remove('selected');
+                selected[1].classList.add('correct');
+            } else {
+                console.log('Model is incorrect');
+                selected[1].classList.remove('selected');
+                selected[1].classList.add('wrong');
+
+                modelP.forEach((element) => {
+                    if (correctRegex.test(element.textContent) == true) {
+                        element.classList.add('correct');
+                    }
+                });
+            }
+
+            if (correctRegex.test(subAlt) == true) {
+                console.log('Common name is correct');
+                selected[2].classList.remove('selected');
+                selected[2].classList.add('correct');
+            } else {
+                console.log('Common name is incorrect');
+                selected[2].classList.remove('selected');
+                selected[2].classList.add('wrong');
+
+                altnameP.forEach((element) => {
+                    if (correctRegex.test(element.textContent) == true) {
+                        element.classList.add('correct');
+                    }
+                });
+            }
         });
 
         nextQ.addEventListener('click', function() {
