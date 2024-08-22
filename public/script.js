@@ -23,9 +23,9 @@ function dataHub(data) {
     insertData(seqData)
 };
 
-const regExL = new RegExp(/Learn/g);
-const regExP = new RegExp(/Practice/g);
-const regExT = new RegExp(/Test/g);
+const regExL = new RegExp(/learn/g);
+const regExP = new RegExp(/practice/g);
+const regExT = new RegExp(/test/g);
 
 let seq = '1'
 
@@ -71,12 +71,8 @@ function getCookie(name) {
     if (parts.length == 2) return parts.pop().split(";").shift();
 };
 
-
-if (regExL.test(window.location.href)) {
-    // var buttonNext = document.getElementById('next');
-    // var buttonReturn = document.getElementById('return');
-    // var buttonPrev = document.getElementById('prev');
-
+// Yes. This is inefficient. Yes. I could move line 76 and 75 around. However, if I do that, for no reason other than JavaScript being JavaScript, the code will be terribly slow. 
+if (regExL.test(window.location.href.toLowerCase()) == true) {
     function insertData(data) {
         var cont = document.querySelector('main');
         cont.innerHTML = "";
@@ -92,7 +88,6 @@ if (regExL.test(window.location.href)) {
                 <p>Go back</p>
             </a>
         `)
-        console.log(buttonNext)
         var buttonNext = document.getElementById('next');
         var buttonReturn = document.getElementById('return');
         var buttonPrev = document.getElementById('prev');
@@ -109,5 +104,124 @@ if (regExL.test(window.location.href)) {
             seq = getCookie('learn');
             dataHub(productList);
         });
+    };
+};
+
+// Credit to @Álvaro González on StackOverflow. Link: https://stackoverflow.com/a/59837259
+function shuffle(arr) {
+    var k = arr.length, j, temp;
+    while(--k > 0){
+      j = Math.floor(Math.random()*(k+1));
+      temp = arr[j];
+      arr[j] = arr[k];
+      arr[k] = temp;
     }
 }
+
+if (regExP.test(window.location.href.toLowerCase()) == true) {
+    function insertData(data) {
+        var shuffledManufacturer = [data[1], data[4], data[5], data[6]]
+        shuffle(shuffledManufacturer);
+
+        var shuffledModel = [data[2], data[7], data[8], data[9]]
+        shuffle(shuffledModel);
+
+        var shuffledAltName = [data[3], data[10], data[11], data[12]]
+        shuffle(shuffledAltName);
+
+        var cont = document.querySelector('main');
+        cont.innerHTML = "";
+        cont.insertAdjacentHTML('beforeend', `
+            <img src="../img/Aircraft/${data[0] - 1}.png" alt="Photo of ${data[1]} ${data[2]}">
+            <div class="central">
+                <div id="qindicator"><p>Question </p></div>
+               <hr>
+               <div id="score"><p>Score: 0<!-- #Score derived from calculation here --></p></div>
+            </div>
+            <div class="questions">
+                <h2>What is the manufacturer?</h2>
+               <ul>
+                   <li><p class="manufacturerP">${shuffledManufacturer[0]}</p></li>
+                   <li><p class="manufacturerP">${shuffledManufacturer[1]}</p></li>
+                   <li><p class="manufacturerP">${shuffledManufacturer[2]}</p></li>
+                   <li><p class="manufacturerP">${shuffledManufacturer[3]}</p></li>
+                </ul>
+                <h2>What is the model?</h2>
+                <ul>
+                    <li><p class="modelP">${shuffledModel[0]}</p></li>
+                    <li><p class="modelP">${shuffledModel[1]}</p></li>
+                    <li><p class="modelP">${shuffledModel[2]}</p></li>
+                    <li><p class="modelP">${shuffledModel[3]}</p></li>
+                </ul>
+                <h2>What is the common name?</h2>
+                <ul>
+                    <li><p class="altnameP">${shuffledModel[0]}</p></li>
+                    <li><p class="altnameP">${shuffledModel[1]}</p></li>
+                    <li><p class="altnameP">${shuffledModel[2]}</p></li>
+                    <li><p class="altnameP">${shuffledModel[3]}</p></li>
+                </ul>
+                <div class="buttons">
+                    <button id="submit"><p>Submit</p></button>
+                    <p id="skip">Next Question</p></div>
+                </div>
+            </div>
+            <a href="/menu" class="leave">
+                <p>Go back</p>
+            </a>
+        `)
+
+        const correctRegex = new RegExp(/${data[1]}, /g);
+
+        var submit = document.getElementById('submit');
+        var nextQ = document.getElementById('skip');
+        var qindicator = document.getElementById('qindicator');
+        var score = document.getElementById('score');
+
+        var q = 0;
+        var s = 0;
+
+        var manufacturerP = document.querySelectorAll('.manufacturerP');
+        var modelP = document.querySelectorAll('.modelP');
+        var altnameP = document.querySelectorAll('.altnameP');
+
+        var selected = [];
+
+        manufacturerP.forEach((element) => {
+            element.addEventListener('click', function() {
+                manufacturerP.forEach((element) => {
+                    element.classList.remove('selected');
+                });
+                element.classList.add('selected');
+                selected[0] = element.textContent;
+            });
+        });
+
+        modelP.forEach((element) => {
+            element.addEventListener('click', function() {
+                modelP.forEach((element) => {
+                    element.classList.remove('selected');
+                });
+                element.classList.add('selected');
+                selected[1] = element.textContent;
+            });
+        });
+
+        altnameP.forEach((element) => {
+            element.addEventListener('click', function() {
+                altnameP.forEach((element) => {
+                    element.classList.remove('selected');
+                });
+                element.classList.add('selected');
+                selected[2] = element.textContent;
+            });
+        });
+
+        submit.addEventListener('click', function() {
+            console.log(selected.toString())
+        });
+
+        nextQ.addEventListener('click', function() {
+            console.log('gfkdlsghfdikjsgh')
+        });
+    };
+};
