@@ -3,15 +3,15 @@ const session = require("express-session");
 const path = require("path");
 const popup = require('node-popup');
 const cookieParser = require("cookie-parser");
-const fs = require("fs").promises; // For reading the password file with promises
+const fs = require("fs").promises;
 const app = express();
-const db = require("./db/questions.js"); // Ensure this module exports getSequentialQuestion
+const db = require("./db/questions.js");
 const port = 1337;
 const cors = require('cors');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); // Correctly set the static directory
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 
 app.use(cors());

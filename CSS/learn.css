@@ -7,7 +7,7 @@ img {
 
 .dual {
     display: flex;
-    gap: 2rem;
+    gap: 5px;
 }
 
 .left,
@@ -22,6 +22,19 @@ img {
     justify-content: center;
     position: relative;
     cursor: pointer;
+}
+
+.return {
+    background-color: var(--bg-sec);
+    width: 250px;
+    text-align: center;
+    height: var(--lrheight);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .left::after,
