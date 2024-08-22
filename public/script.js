@@ -118,6 +118,9 @@ function shuffle(arr) {
     }
 }
 
+var q = 0;
+var s = 0;
+
 if (regExP.test(window.location.href.toLowerCase()) == true) {
     function insertData(data) {
         var shuffledManufacturer = [data[1], data[4], data[5], data[6]]
@@ -134,9 +137,9 @@ if (regExP.test(window.location.href.toLowerCase()) == true) {
         cont.insertAdjacentHTML('beforeend', `
             <img src="../img/Aircraft/${data[0] - 1}.png" alt="Photo of ${data[1]} ${data[2]}">
             <div class="central">
-                <div id="qindicator"><p>Question </p></div>
+                <div id="qindicator"><p></p></div>
                <hr>
-               <div id="score"><p>Score: 0<!-- #Score derived from calculation here --></p></div>
+               <div id="score"><p></p></div>
             </div>
             <div class="questions">
                 <h2>What is the manufacturer?</h2>
@@ -165,7 +168,7 @@ if (regExP.test(window.location.href.toLowerCase()) == true) {
                     <p id="skip">Next Question</p></div>
                 </div>
             </div>
-            <a href="/menu" class="leave">
+            <a href="../Quiz/PrimaryPage.html" class="leave">
                 <p>Go back</p>
             </a>
         `)
@@ -176,9 +179,6 @@ if (regExP.test(window.location.href.toLowerCase()) == true) {
         var nextQ = document.getElementById('skip');
         var qindicator = document.getElementById('qindicator');
         var score = document.getElementById('score');
-
-        var q = 0;
-        var s = 0;
 
         var manufacturerP = document.querySelectorAll('.manufacturerP');
         var modelP = document.querySelectorAll('.modelP');
@@ -216,7 +216,15 @@ if (regExP.test(window.location.href.toLowerCase()) == true) {
             });
         });
 
+        var hasFired = false;
+
         submit.addEventListener('click', function() {
+            if (hasFired == true) {
+                return;
+            };
+
+            hasFired = true;
+
             console.log(selected)
 
             if (selected[0] == undefined) {
@@ -236,56 +244,274 @@ if (regExP.test(window.location.href.toLowerCase()) == true) {
             var subAlt = selected[2].textContent;
 
             if (correctRegex.test(subMan) == true) {
-                console.log('Manufacturer is correct');
                 selected[0].classList.remove('selected');
                 selected[0].classList.add('correct');
             } else {
-                console.log('Manufacturer is incorrect');
-                selected[0].classList.remove('selected');
-                selected[0].classList.add('wrong');
-
+                if (selected[0] != 'none') {
+                    selected[0].classList.remove('selected');
+                    selected[0].classList.add('wrong');
+                }
+                
                 manufacturerP.forEach((element) => {
+                    if (selected[0] == 'none') {
+                        element.classList.add('wrong');
+                    }
                     if (correctRegex.test(element.textContent) == true) {
+                        element.classList.remove('wrong');
                         element.classList.add('correct');
                     }
                 });
             }
 
             if (correctRegex.test(subMod) == true) {
-                console.log('Model is correct');
                 selected[1].classList.remove('selected');
                 selected[1].classList.add('correct');
             } else {
-                console.log('Model is incorrect');
-                selected[1].classList.remove('selected');
-                selected[1].classList.add('wrong');
+                if (selected[1] != 'none') {
+                    selected[1].classList.remove('selected');
+                    selected[1].classList.add('wrong');
+                }
 
                 modelP.forEach((element) => {
+                    if (selected[1] == 'none') {
+                        element.classList.add('wrong');
+                    }
                     if (correctRegex.test(element.textContent) == true) {
+                        element.classList.remove('wrong');
                         element.classList.add('correct');
                     }
                 });
             }
 
             if (correctRegex.test(subAlt) == true) {
-                console.log('Common name is correct');
                 selected[2].classList.remove('selected');
                 selected[2].classList.add('correct');
             } else {
-                console.log('Common name is incorrect');
-                selected[2].classList.remove('selected');
-                selected[2].classList.add('wrong');
+                if (selected[2] != 'none') {
+                    selected[2].classList.remove('selected');
+                    selected[2].classList.add('wrong');
+                }
 
                 altnameP.forEach((element) => {
+                    if (selected[2] == 'none') {
+                        element.classList.add('wrong');
+                    }
                     if (correctRegex.test(element.textContent) == true) {
+                        element.classList.remove('wrong');
                         element.classList.add('correct');
                     }
                 });
             }
+
+            if (correctRegex.test(subMan) == true && correctRegex.test(subMod) == true && correctRegex.test(subAlt) == true) {
+                s++;
+                score.innerHTML = "";
+                score.insertAdjacentHTML('beforeend', `<p>Score: ${s}</p>`);
+            }
         });
 
         nextQ.addEventListener('click', function() {
-            console.log('gfkdlsghfdikjsgh')
+            q++;
+            nextInSeq();
+            console.log(q, 'gjfdkshg')
         });
+
+        qindicator.innerHTML = "";
+        qindicator.insertAdjacentHTML('beforeend', `<p>Question ${q + 1}</p>`);
+        console.log(q)
+
+        score.innerHTML = "";
+        score.insertAdjacentHTML('beforeend', `<p>Score: ${s}</p>`);
     };
 };
+
+if (regExT.test(window.location.href.toLowerCase()) == true) {
+    function insertData(data) {
+        var shuffledManufacturer = [data[1], data[4], data[5], data[6]]
+        shuffle(shuffledManufacturer);
+
+        var shuffledModel = [data[2], data[7], data[8], data[9]]
+        shuffle(shuffledModel);
+
+        var shuffledAltName = [data[3], data[10], data[11], data[12]]
+        shuffle(shuffledAltName);
+
+        var cont = document.querySelector('main');
+        cont.innerHTML = "";
+        cont.insertAdjacentHTML('beforeend', `
+            <div id="cover">
+                <img src="../img/Aircraft/${data[0] - 1}.png" alt="${data[1]} ${data[2]}" id="disappearingImg">
+            </div>
+            <h2>What is the manufacturer?</h2>
+            <ul id="manufacturerUl">
+            <li><p class="manufacturerP">${shuffledManufacturer[0]}</p></li>
+               <li><p class="manufacturerP">${shuffledManufacturer[1]}</p></li>
+               <li><p class="manufacturerP">${shuffledManufacturer[2]}</p></li>
+               <li><p class="manufacturerP">${shuffledManufacturer[3]}</p></li>
+            </ul>
+            <h2>What is the model?</h2>
+            <ul>
+                <li><p class="modelP">${shuffledModel[0]}</p></li>
+                <li><p class="modelP">${shuffledModel[1]}</p></li>
+                <li><p class="modelP">${shuffledModel[2]}</p></li>
+                <li><p class="modelP">${shuffledModel[3]}</p></li>
+            </ul>
+            <h2>What is the common name?</h2>
+            <ul>
+                <li><p class="altnameP">${shuffledAltName[0]}</p></li>
+                <li><p class="altnameP">${shuffledAltName[1]}</p></li>
+                <li><p class="altnameP">${shuffledAltName[2]}</p></li>
+                <li><p class="altnameP">${shuffledAltName[3]}</p></li>
+            </ul>
+            <div class="buttons">
+                <button id="submit"><p>Submit</p></button>
+                <p id="skip">Next Question</p></div>
+            </div>
+            <a href="PrimaryPage.html" class="leave">
+                <p>Go back</p>
+            </a>
+        `)
+
+        const correctRegex = new RegExp(`${data[1]}|${data[2]}|${data[3]}`);
+
+        var submit = document.getElementById('submit');
+        var nextQ = document.getElementById('skip');
+
+        var manufacturerP = document.querySelectorAll('.manufacturerP');
+        var modelP = document.querySelectorAll('.modelP');
+        var altnameP = document.querySelectorAll('.altnameP');
+
+        var selected = [];
+
+        manufacturerP.forEach((element) => {
+            element.addEventListener('click', function() {
+                manufacturerP.forEach((element) => {
+                    element.classList.remove('selected');
+                });
+                element.classList.add('selected');
+                selected[0] = element;
+            });
+        });
+
+        modelP.forEach((element) => {
+            element.addEventListener('click', function() {
+                modelP.forEach((element) => {
+                    element.classList.remove('selected');
+                });
+                element.classList.add('selected');
+                selected[1] = element;
+            });
+        });
+
+        altnameP.forEach((element) => {
+            element.addEventListener('click', function() {
+                altnameP.forEach((element) => {
+                    element.classList.remove('selected');
+                });
+                element.classList.add('selected');
+                selected[2] = element;
+            });
+        });
+
+        var hasFired = false;
+
+        submit.addEventListener('click', function() {
+            if (hasFired == true) {
+                return;
+            };
+
+            hasFired = true;
+
+            console.log(selected)
+
+            if (selected[0] == undefined) {
+                selected[0] = 'none';
+            };
+
+            if (selected[1] == undefined) {
+                selected[1] = 'none';
+            };
+
+            if (selected[2] == undefined) {
+                selected[2] = 'none';
+            };
+
+            var subMan = selected[0].textContent;
+            var subMod = selected[1].textContent;
+            var subAlt = selected[2].textContent;
+
+            if (correctRegex.test(subMan) == true) {
+                selected[0].classList.remove('selected');
+                selected[0].classList.add('correct');
+            } else {
+                if (selected[0] != 'none') {
+                    selected[0].classList.remove('selected');
+                    selected[0].classList.add('wrong');
+                }
+                
+                manufacturerP.forEach((element) => {
+                    if (selected[0] == 'none') {
+                        element.classList.add('wrong');
+                    }
+                    if (correctRegex.test(element.textContent) == true) {
+                        element.classList.remove('wrong');
+                        element.classList.add('correct');
+                    }
+                });
+            }
+
+            if (correctRegex.test(subMod) == true) {
+                selected[1].classList.remove('selected');
+                selected[1].classList.add('correct');
+            } else {
+                if (selected[1] != 'none') {
+                    selected[1].classList.remove('selected');
+                    selected[1].classList.add('wrong');
+                }
+
+                modelP.forEach((element) => {
+                    if (selected[1] == 'none') {
+                        element.classList.add('wrong');
+                    }
+                    if (correctRegex.test(element.textContent) == true) {
+                        element.classList.remove('wrong');
+                        element.classList.add('correct');
+                    }
+                });
+            }
+
+            if (correctRegex.test(subAlt) == true) {
+                selected[2].classList.remove('selected');
+                selected[2].classList.add('correct');
+            } else {
+                if (selected[2] != 'none') {
+                    selected[2].classList.remove('selected');
+                    selected[2].classList.add('wrong');
+                }
+
+                altnameP.forEach((element) => {
+                    if (selected[2] == 'none') {
+                        element.classList.add('wrong');
+                    }
+                    if (correctRegex.test(element.textContent) == true) {
+                        element.classList.remove('wrong');
+                        element.classList.add('correct');
+                    }
+                });
+            }
+
+            if (correctRegex.test(subMan) == true && correctRegex.test(subMod) == true && correctRegex.test(subAlt) == true) {
+                s++;
+            }
+        });
+
+        nextQ.addEventListener('click', function() {
+            q++;
+            nextInSeq();
+        });
+
+        setTimeout(() => {
+            document.getElementById('cover').classList.add('hidden')
+        }, 3000);
+    };
+}
