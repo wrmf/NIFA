@@ -23,33 +23,5 @@
         </a>
     </main>
     <script src="../public/script.js"></script>
-    <script>
-        // async function fetchAndDisplayQuestion() {
-        //     try {
-        //         const response = await fetch('http://127.0.0.1:1337/all-questions');
-        //         if (!response.ok) {
-        //             throw new Error('Network response was not ok');
-        //         }
-        //         if (!response.headers.get('content-type')?.includes('application/json')) {
-        //             throw new Error('Received non-JSON response from server');
-        //         }
-        //         const questionData = await response.json();
-        //         const aircraftImage = document.querySelector('img');
-        //         aircraftImage.src = `../img/Aircraft/${questionData.correctAircraft.imgSrc-1}.png`;
-        //         console.log(`${questionData.correctAircraft.imgSrc}`)
-        //         aircraftImage.alt = `Image ${questionData.correctAircraft.model}`;
-        //         document.getElementById('Manufacturer').innerHTML = `${questionData.correctAircraft.manufacturer} ${questionData.correctAircraft.model} ${questionData.correctAircraft.altname}`;
-        //     } catch (error) {
-        //         console.error('Error fetching question data:', error);
-        //     }
-        // }
-
-        // fetchAndDisplayQuestion();
-        fetch('http://localhost:1337/all-questions')
-            .then((response) = response.json())
-            .then((data) => {
-                console.log(data);
-            })
-    </script>
 </body>
 </html>

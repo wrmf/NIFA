@@ -7,23 +7,20 @@ const fs = require("fs").promises; // For reading the password file with promise
 const app = express();
 const db = require("./db/questions.js"); // Ensure this module exports getSequentialQuestion
 const port = 1337;
+const cors = require('cors');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public'))); // Correctly set the static directory
 app.use(cookieParser());
 
+app.use(cors());
+
 app.use(session({
     secret: "secure-secret-key-lol",
     saveUninitialized: true,
     resave: true
 }));
-
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
 
 app.get('/', function (req, res) {
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
@@ -106,26 +103,6 @@ app.get('/learn', function (req, res) {
         res.redirect('/');
     }
 
-});
-
-app.get("/random-question", async (req, res) => {
-    try {
-        const question = await db.getRandomQuestion();
-        res.json(question);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Error fetching a random question');
-    }
-});
-
-app.get("/sequential-question", async (req, res) => {
-    try {
-        const question = await db.getSequentialQuestion();
-        res.json(question);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Error fetching a sequential question');
-    }
 });
 
 app.get("/all-questions", async (req, res) => {
