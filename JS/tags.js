@@ -33,7 +33,8 @@ fetch('http://localhost:1337/all-questions')
 setTimeout(() => {
     var tagsFiltered = tagFilter(productList);
     tagInsert(tagsFiltered);
-}, 50);
+    tagSelect.value = getCookie('tag');
+}, 100);
 
 var tags = [];
 

@@ -1,5 +1,5 @@
 img {
-    width: 50%;
+    height: 75vh;
     border-radius: 1rem;
     font-size: 4rem;
     color: var(--text-warn);
@@ -62,4 +62,8 @@ img {
 
 .right::after {
     right: calc(var(--lrheight) / sqrt(2) * -0.5);
+}
+
+p {
+    user-select: none;
 }

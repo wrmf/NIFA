@@ -12,7 +12,7 @@ main {
 .central > div {
     position: absolute;
     height: 4rem;
-    width: 15rem;
+    width: 170px;
     top: 0;
     display: flex;
     align-items: center;
@@ -109,4 +109,8 @@ li p {
 
 #skip:hover {
     color: var(--text-acc);
+}
+
+p {
+    user-select: none;
 }

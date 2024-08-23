@@ -146,3 +146,12 @@ a.leave {
     border-radius: 1rem;
     border: 0.1rem solid var(--border-prim);
 }
+
+select {
+    background-color: var(--bg-sec);
+    border: none;
+    color: var(--text-prim);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: 0.1rem solid var(--border-prim);
+}
