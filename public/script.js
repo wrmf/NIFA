@@ -21,25 +21,30 @@ setTimeout(() => {
 const regExL = new RegExp(/learn/g);
 const regExP = new RegExp(/practice/g);
 const regExT = new RegExp(/test/g);
+var usedRandomP = [];
+var usedRandomT = [];
+let cPr = 0;
 
 function dataHub(data) {
-    const Data = sequential(data);
-    
     // No, the console log does not need to be here. However, for some reason, if I remove this holy console.log, the entire thing breaks. I am also aware it floods console, I noticed that during testing. Unfortunately, moving it anywhere apart from in this one function results in everything falling apart.
     console.log(regExL.test(window.location.href.toLowerCase()), "I'm sorry, random user who checked the console. This doesn't need to be here, or at least it wouldn't, but if I remove it, everything breaks. All three of these console logs are holy and I shalln't touch them.");
     console.log(regExT.test(window.location.href.toLowerCase()));
     console.log(regExP.test(window.location.href.toLowerCase()));
 
+    
     if (regExL.test(window.location.href.toLowerCase()) == true) {
-        insertData(Data)
+        const Data = sequential(data);
+        insertData(Data);
     };
-
+    
     if (regExP.test(window.location.href.toLowerCase()) == true) {
-        insertData(Data)
+        const Data = random(data);
+        insertData(Data);
     };
-
+    
     if (regExT.test(window.location.href.toLowerCase()) == true) {
-        insertData(Data)
+        // const Data = random(data);
+        // insertData(Data);
     };
 };
 
@@ -62,6 +67,35 @@ function sequential(data) {
 
     return Object.values(newData[seq - 1]);
 };
+
+
+function random(data) {
+    const newData = (Object.entries(data)[0][1]);;
+    let hasFiredrandom = false;
+
+    if (hasFiredrandom == false) {
+        shuffle(newData);
+        hasFiredrandom = true;
+    }
+    
+    if (newData.length == 1) {
+        shuffle(newData);
+    };
+
+    usedRandomP.push(newData[cPr]);
+    cPr++;
+
+
+    if (cPr == newData.length) {
+        cPr = 1;
+    };
+
+    console.log(usedRandomP, cPr);
+
+    console.log(newData)
+
+    return Object.values(usedRandomP[cPr - 1]);
+}
 
 function nextInSeq() {
     seq++
@@ -125,6 +159,7 @@ if (regExL.test(window.location.href.toLowerCase()) == true) {
 
 // Credit to @Álvaro González on StackOverflow. Link: https://stackoverflow.com/a/59837259
 function shuffle(arr) {
+    console.log(arr)
     var k = arr.length, j, temp;
     while(--k > 0){
       j = Math.floor(Math.random()*(k+1));
@@ -132,6 +167,7 @@ function shuffle(arr) {
       arr[j] = arr[k];
       arr[k] = temp;
     }
+    console.log(arr)
 }
 
 var q = 0;
