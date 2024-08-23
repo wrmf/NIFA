@@ -26,6 +26,15 @@ var usedRandomT = [];
 let cPr = 0;
 
 function dataHub(data) {
+    var tagSelected = getCookie('tag');
+    var processedData = Object.entries(data)[0][1];
+
+    console.log(data, processedData)
+
+    processedData.forEach((element) => {
+        console.log(Object.values(element)[13])
+    });
+
     // No, the console log does not need to be here. However, for some reason, if I remove this holy console.log, the entire thing breaks. I am also aware it floods console, I noticed that during testing. Unfortunately, moving it anywhere apart from in this one function results in everything falling apart.
     console.log(regExL.test(window.location.href.toLowerCase()), "I'm sorry, random user who checked the console. This doesn't need to be here, or at least it wouldn't, but if I remove it, everything breaks. All three of these console logs are holy and I shalln't touch them.");
     console.log(regExT.test(window.location.href.toLowerCase()));
@@ -43,8 +52,8 @@ function dataHub(data) {
     };
     
     if (regExT.test(window.location.href.toLowerCase()) == true) {
-        // const Data = random(data);
-        // insertData(Data);
+        const Data = random(data);
+        insertData(Data);
     };
 };
 
