@@ -32,77 +32,12 @@ app.get('/login', function (req, res) {
 });
 
 app.post('/login', async (req, res) => {
-    try {
-        const inputPass = req.body.password;
-        const pass = await fs.readFile(path.resolve(__dirname, 'public', 'password.txt'), 'utf-8');
+    if (e) throw e;
 
-        if (inputPass === pass.trim()) {
-            req.session.loggedIn = true;
-            res.redirect('menu');
-        } else {
-            // TODO: Show a popup with the message "Incorrect password"
-            req.session.loggedIn = false;
-            res.redirect('/');
-        }
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Error reading password file');
-    }
-});
-
-app.get('/menu', function (req, res) {
-    if(req.session.loggedIn) {
-
-        res.sendFile(path.resolve(__dirname, 'Quiz', 'PrimaryPage.html'));
-    } else {
-        // TODO: Add a popup with the message "You are not logged in"
-        res.redirect('/');
-    }
-
-});
-
-app.get('/testPre', function (req, res) {
-    if(req.session.loggedIn) {
-
-        res.sendFile(path.resolve(__dirname, 'Quiz', 'TestPre.html'));
-    } else {
-        // TODO: Add a popup with the message "You are not logged in"
-        res.redirect('/');
-    }
-
-});
-
-app.get('/test', function (req, res) {
-    if(req.session.loggedIn) {
-
-        res.sendFile(path.resolve(__dirname, 'Quiz', 'Test.html'));
-    } else {
-        // TODO: Add a popup with the message "You are not logged in"
-        res.redirect('/');
-    }
-
-});
-
-app.get('/practice', function (req, res) {
-    if(req.session.loggedIn) {
-
-        res.sendFile(path.resolve(__dirname, 'Quiz', 'Practice.html'));
-    } else {
-        // TODO: Add a popup with the message "You are not logged in"
-        res.redirect('/');
-    }
-
-});
-
-app.get('/learn', function (req, res) {
-    if(req.session.loggedIn) {
-
-        res.sendFile(path.resolve(__dirname, 'Quiz', 'Learn.html'));
-    } else {
-        // TODO: Add a popup with the message "You are not logged in"
-        res.redirect('/');
-    }
-
+    fs.readFile('data.json', (e, data) => {
+        if (e) throw e;
+        res.send(data);
+    });
 });
 
 app.get("/all-questions", async (req, res) => {
