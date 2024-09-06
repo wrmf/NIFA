@@ -1,7 +1,7 @@
 main {
     flex-direction: row;
     height: 100vh;
-    padding: 0 4rem;
+    padding: 0 40px;
 }
 
 .central {
@@ -11,7 +11,7 @@ main {
 
 .central > div {
     position: absolute;
-    height: 4rem;
+    height: 40px;
     width: 170px;
     top: 0;
     display: flex;
@@ -20,19 +20,19 @@ main {
     background-color: var(--bg-sec);
     border-color: var(--text-acc);
     border-style: solid;
-    border-bottom-width: 0.1rem;
+    border-bottom-width: 0.10px;
 }
 
 #qindicator {
-    right: 0rem;
-    border-left-width: 0.1rem;
-    border-radius: 0 0 0 1rem;
+    right: 00px;
+    border-left-width: 1px;
+    border-radius: 0 0 0 10px;
 }
 
 #score {
-    left: 0.2rem;
-    border-right-width: 0.1rem;
-    border-radius: 0 0 1rem 0;
+    left: 2px;
+    border-right-width: 1px;
+    border-radius: 0 0 10px 0;
 }
 
 hr {
@@ -40,8 +40,8 @@ hr {
     height: 100vh;
     background-color: var(--text-acc);
     border: none;
-    width: 0.2rem;
-    top: -0.5rem;
+    width: 2px;
+    top: -5px;
 }
 
 div:has(> img) {
@@ -50,18 +50,18 @@ div:has(> img) {
 
 img {
     width: 100%;
-    border-radius: 1rem;
+    border-radius: 10px;
 }
 
 h2 {
-    margin-left: 4rem;
+    margin-left: 40px;
 }
 
 ul {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-left: 4rem;
+    gap: 10px;
+    margin-left: 40px;
 }
 
 .questions {
@@ -71,7 +71,7 @@ ul {
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-    padding-top: 5rem;
+    padding-top: 50px;
 }
 
 li {
@@ -86,16 +86,16 @@ li:hover {
 li p {
     background-color: var(--bg-sec);
     width: max-content;
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
+    padding: 0.50px 10px;
+    border-radius: 10px;
 }
 
 .buttons {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 20px;
     width: max-content;
-    margin-left: 4rem;
+    margin-left: 40px;
 }
 
 .buttons button {
@@ -104,11 +104,11 @@ li p {
 
 #skip {
     background-color: var(--bg-sec);
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
+    padding: 0.50px 10px;
+    border-radius: 10px;
     cursor: pointer;
     transition: color 0.05s ease-in-out;
-    border: 0.1rem solid var(--border-prim);
+    border: 10px solid var(--border-prim);
 }
 
 #skip:hover {

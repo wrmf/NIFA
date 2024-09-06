@@ -29,8 +29,8 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    margin-left: 4rem;
+    gap: 10px;
+    margin-left: 40px;
 }
 
 li {
@@ -45,16 +45,16 @@ li:hover {
 li p {
     background-color: var(--bg-sec);
     width: max-content;
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
+    padding: 5px 10px;
+    border-radius: 10px;
 }
 
 .buttons {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 20px;
     width: max-content;
-    margin-left: 4rem;
+    margin-left: 40px;
     align-items: center;
 }
 
@@ -64,11 +64,11 @@ li p {
 
 #skip {
     background-color: var(--bg-sec);
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
+    padding: 5px 10px;
+    border-radius: 10px;
     cursor: pointer;
     transition: color 0.05s ease-in-out;
-    border: 0.1rem solid var(--border-prim);
+    border: 1px solid var(--border-prim);
 }
 
 #skip:hover {

@@ -3,14 +3,14 @@
     grid-template-columns: repeat(3, 1fr);
     width: 80%;
     height: 75vh;
-    gap: 4rem;
+    gap: 40px;
 }
 
 .activity {
     background-color: var(--bg-sec);
-    border-radius: 4rem;
+    border-radius: 40px;
     box-sizing: border-box;
-    padding: 4rem;
+    padding: 40px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -22,7 +22,7 @@
 .activity h2,
 .activity p {
     z-index: 9;
-    box-shadow: 0 0 0.5rem 0.5rem var(--bg-sec);
+    box-shadow: 0 0 5px 5px var(--bg-sec);
     background-color: var(--bg-sec);
 }
 
