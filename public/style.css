@@ -155,3 +155,8 @@ select {
     border-radius: 1rem;
     border: 0.1rem solid var(--border-prim);
 }
+
+.Failure {
+    color: var(--text-warn);
+    text-align: center;
+}

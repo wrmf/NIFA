@@ -13,21 +13,8 @@
     <main>
         <label for="password"><p>Password</p></label>
         <input type="password" id="password" name="password" required>
-        <button type="submit" id="submit"><h4>Log In</h4></button>
+        <button type="submit" id="submit">Log In</button>
     </main>
-    <script src="login.js">
-        let passwordEntered = document.getElementById('password').value;
-        var submit = document.getElementById('submit');
-
-        submit.addEventListener('click', function() {
-            passwordEntered = document.getElementById('password').value;
-        
-            if (passwordEntered === password) {
-                window.location.href = '../Quiz/PrimaryPage.html';
-            } else {
-                alert('Wrong password.')
-            }
-        });
-    </script>
+    <script src="login.js"></script>
 </body>
 </html>

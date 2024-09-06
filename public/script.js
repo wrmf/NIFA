@@ -31,7 +31,7 @@ function dataHub(data) {
     var tagfilteredData = [];
 
     processedData.forEach((element) => {
-        if (Object.values(element)[13] == tagSelected || tagSelected == 'selectATag') {
+        if (Object.values(element)[13] == tagSelected || tagSelected == 'selectATag' || tagSelected == undefined) {
             tagfilteredData.push(element);
         };
     });
@@ -199,7 +199,9 @@ if (regExP.test(window.location.href.toLowerCase()) == true) {
         var cont = document.querySelector('main');
         cont.innerHTML = "";
         cont.insertAdjacentHTML('beforeend', `
-            <img src="../img/Aircraft/${data[0] - 1}.png" alt="Photo of ${data[1]} ${data[2]}">
+            <div class="painandsuffering">
+                <img src="../img/Aircraft/${data[0] - 1}.png" alt="Photo of ${data[1]} ${data[2]}">
+            </div>
             <div class="central">
                 <div id="qindicator"><p></p></div>
                <hr>

@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 80%;
-    height: 80vh;
+    height: 75vh;
     gap: 4rem;
 }
 
@@ -37,4 +37,17 @@
 
 .activity:hover img {
     transform: scale(1.1);
+}
+
+.status {
+    position: absolute;
+    bottom: 10px;
+}
+
+.off {
+    color: var(--text-warn);
+}
+
+.on {
+    color: var(--text-right);
 }

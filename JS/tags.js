@@ -63,6 +63,10 @@ function tagInsert(tagsFiltered) {
 
 tagSelect.addEventListener('change', () => {
     setCookie('tag', tagSelect.value);
+});
 
-    console.log(getCookie('tag'));
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        tagSelect.value = 'selectATag';
+    }, 200);
 });
