@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const fs = require("fs").promises;
 const app = express();
 const db = require("./db/questions.js");
-const port = 1337;
+const port = 3000;
 const cors = require('cors');
 
 app.use(express.urlencoded({ extended: true }));
@@ -55,4 +55,6 @@ app.get('/getTags', async (req, res) => {
     }
 });
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+app.listen(port, '0.0.0.0', () => {
+    console.log('Server running on port '+port);
+});
